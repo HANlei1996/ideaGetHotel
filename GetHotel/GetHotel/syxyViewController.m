@@ -34,7 +34,7 @@
     //设置导航条标题文字
     //self.navigationItem.title=@"活动列表";
     //设置导航条的颜色（风格颜色）
-    self.navigationController.navigationBar.barTintColor=[UIColor whiteColor];
+    [self.navigationController.navigationBar setBarTintColor:[UIColor colorWithRed:20/255.0 green:100/255.0 blue:255.0 alpha:1.0]];
     //设置导航条的标题颜色
     self.navigationController.navigationBar.titleTextAttributes=@{NSForegroundColorAttributeName : [UIColor blueColor] };
     //设置导航条是否隐藏
@@ -43,8 +43,7 @@
     self.navigationController.navigationBar.tintColor=[UIColor blueColor];
     //设置是否需要毛玻璃效果
     self.navigationController.navigationBar.translucent=YES;
-}
-/*
+}/*
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation

@@ -220,11 +220,20 @@
                         <segue destination="klS-C8-VCQ" kind="show" identifier="wdxx" id="I5B-Cr-cXX"/>
                         <segue destination="rfI-Ul-Fxy" kind="show" identifier="syxy" id="rjH-zy-LIc"/>
                         <segue destination="3t6-of-MKI" kind="show" identifier="lxkf" id="jXH-g2-3Yw"/>
+                        <segue destination="lO8-eX-iC7" kind="show" identifier="zhsz" id="Vu5-Qd-VdV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RAJ-6T-PXJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-124" y="527"/>
+        </scene>
+        <!--Sign-->
+        <scene sceneID="w6b-4j-364">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Sign" id="lO8-eX-iC7" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cO3-Mx-YT2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="454" y="239"/>
         </scene>
         <!--我的航空-->
         <scene sceneID="W3G-2c-DLU">

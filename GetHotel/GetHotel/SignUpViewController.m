@@ -47,8 +47,8 @@
 }
 //用Model的方式返回上一页
 - (void)backAction {
-    [self dismissViewControllerAnimated:YES completion:nil];
-    //[self.navigationController popViewControllerAnimated:YES];
+    //[self dismissViewControllerAnimated:YES completion:nil];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 -(void)uiLayout{
     //判断是否存在用户名记忆体
