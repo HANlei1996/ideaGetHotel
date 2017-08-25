@@ -15,6 +15,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *dengjiLabel;
 @property (strong, nonatomic) NSArray *myArr;
 @property (weak, nonatomic) IBOutlet UITableView *myTabelView;
+- (IBAction)loginBtn:(UIButton *)sender forEvent:(UIEvent *)event;
+@property (weak, nonatomic) IBOutlet UIButton *loginLabel;
 
 @end
 
@@ -37,6 +39,19 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:YES animated:NO];
+    if ([Utilities loginCheck]) {
+        //已登录
+        _loginLabel.hidden=YES;
+        _nameLable.hidden=NO;
+        
+    }else{
+        //未登录
+        _loginLabel.hidden=NO;
+        _nameLable.hidden=YES;
+        _touxiangImage.image=[UIImage imageNamed:@"头像"];
+        
+    }
+
 }
 
 /*
@@ -83,28 +98,40 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     //取消细胞的选中状态
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    switch (indexPath.section) {
-        case 0:
-            [self performSegueWithIdentifier:@"" sender:self];
-            break;
-        case 1:
-            [self performSegueWithIdentifier:@"wdhk" sender:self];
-            break;
-        case 2:
-            [self performSegueWithIdentifier:@"wdxx" sender:self];
-            break;
-        case 3:
-            [self performSegueWithIdentifier:@"zhsz" sender:self];
-            break;
-        case 4:
-            [self performSegueWithIdentifier:@"syxy" sender:self];
-            break;
-
-        default:
-            [self performSegueWithIdentifier:@"lxkf" sender:self];
-            break;
+    
+        if ([Utilities loginCheck]) {
+            switch (indexPath.section) {
+                case 0:
+                    [self performSegueWithIdentifier:@"" sender:self];
+                    break;
+                case 1:
+                    [self performSegueWithIdentifier:@"wdhk" sender:self];
+                    break;
+                case 2:
+                    [self performSegueWithIdentifier:@"wdxx" sender:self];
+                    break;
+                case 3:
+                    [self performSegueWithIdentifier:@"zhsz" sender:self];
+                    break;
+                case 4:
+                    [self performSegueWithIdentifier:@"syxy" sender:self];
+                    break;
+                    
+                default:
+                    [self performSegueWithIdentifier:@"lxkf" sender:self];
+                    break;
+            }
+        }else{
+            
+            UINavigationController *signNavi=[Utilities getStoryboardInstance:
+                                              @"Sign"byIdentity:@"SignNavi"];
+            [self presentViewController:signNavi animated:YES completion:nil];
+            
+        }
     }
 
-}
 
+- (IBAction)loginBtn:(UIButton *)sender forEvent:(UIEvent *)event {
+    [self performSegueWithIdentifier:@"zhsz" sender:self];
+}
 @end
