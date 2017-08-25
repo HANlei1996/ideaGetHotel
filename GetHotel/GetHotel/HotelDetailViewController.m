@@ -65,9 +65,29 @@
 - (void)leftButtonAction: (UIButton *)sender{
     [self.navigationController popViewControllerAnimated:YES];
 }
--(void)uiLayout{
+-(void)networkRequest{
+    UIActivityIndicatorView *aiv=[Utilities getCoverOnView:self.view];
+    NSMutableDictionary *parameters=[NSMutableDictionary new];
+    
+    [RequestAPI requestURL:@"/findHotelById" withParameters:parameters andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
+        
+        [aiv stopAnimating];
+        if([responseObject[@"resultFlag"]integerValue] == 8001){
+            
+        }else{
+            NSString *errorMsg=[ErrorHandler getProperErrorString:[responseObject[@"resultFlag"]integerValue]];
+            [Utilities popUpAlertViewWithMsg:errorMsg andTitle:nil onView:self];
+            
+        }
+    } failure:^(NSInteger statusCode, NSError *error) {
+        [aiv stopAnimating];
+        //业务逻辑失败的情况下
+        [Utilities popUpAlertViewWithMsg:@"请保持网络连接畅通" andTitle:nil onView:self];
+    }];
     
 }
+
+
 /*
 #pragma mark - Navigation
 
