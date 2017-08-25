@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		798CFBB21F4FB55100F63873 /* MyHotelTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 798CFBB11F4FB55100F63873 /* MyHotelTableViewCell.m */; };
 		7ACA18890D5F927A6D751D41 /* libPods-GetHotel.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C25D48D47A878363B9B3B06F /* libPods-GetHotel.a */; };
 		84130F5A1F4EDFBB00140F50 /* MyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84130F591F4EDFBB00140F50 /* MyTableViewCell.m */; };
 		84130F5E1F4EE45400140F50 /* wdhkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84130F5D1F4EE45400140F50 /* wdhkViewController.m */; };
@@ -72,6 +73,8 @@
 
 /* Begin PBXFileReference section */
 		23E364B5BBD2F6C414010A9B /* Pods-GetHotel.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GetHotel.release.xcconfig"; path = "Pods/Target Support Files/Pods-GetHotel/Pods-GetHotel.release.xcconfig"; sourceTree = "<group>"; };
+		798CFBB01F4FB55100F63873 /* MyHotelTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyHotelTableViewCell.h; sourceTree = "<group>"; };
+		798CFBB11F4FB55100F63873 /* MyHotelTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyHotelTableViewCell.m; sourceTree = "<group>"; };
 		84130F581F4EDFBB00140F50 /* MyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTableViewCell.h; sourceTree = "<group>"; };
 		84130F591F4EDFBB00140F50 /* MyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTableViewCell.m; sourceTree = "<group>"; };
 		84130F5C1F4EE45400140F50 /* wdhkViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wdhkViewController.h; sourceTree = "<group>"; };
@@ -428,6 +431,8 @@
 			children = (
 				8488E2B61F4EDB85003D8DD5 /* MyHotelViewController.h */,
 				8488E2B71F4EDB85003D8DD5 /* MyHotelViewController.m */,
+				798CFBB01F4FB55100F63873 /* MyHotelTableViewCell.h */,
+				798CFBB11F4FB55100F63873 /* MyHotelTableViewCell.m */,
 			);
 			name = MyHotel;
 			sourceTree = "<group>";
@@ -652,6 +657,7 @@
 				8488E24C1F4ED4A4003D8DD5 /* BasicEncodingRules.m in Sources */,
 				8488E2091F4ED3E2003D8DD5 /* main.m in Sources */,
 				8488E2AC1F4EDAC1003D8DD5 /* MyViewController.m in Sources */,
+				798CFBB21F4FB55100F63873 /* MyHotelTableViewCell.m in Sources */,
 				8488E28C1F4ED4B9003D8DD5 /* NSDate+Utility.m in Sources */,
 				8488E2B81F4EDB85003D8DD5 /* MyHotelViewController.m in Sources */,
 				84130F5A1F4EDFBB00140F50 /* MyTableViewCell.m in Sources */,
