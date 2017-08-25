@@ -1,49 +1,161 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="pVC-63-VbO">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--My Hotel View Controller-->
-        <scene sceneID="jvC-Y7-Xej">
+        <!--我的酒店-->
+        <scene sceneID="vwu-BY-Dkv">
             <objects>
-                <viewController id="otw-uu-CLT" customClass="MyHotelViewController" sceneMemberID="viewController">
+                <viewController id="Nr1-pn-rmh" customClass="MyHotelViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="6mV-uD-LwL"/>
-                        <viewControllerLayoutGuide type="bottom" id="qbU-2p-Oap"/>
+                        <viewControllerLayoutGuide type="top" id="NfK-iL-Iun"/>
+                        <viewControllerLayoutGuide type="bottom" id="0NR-pd-uF7"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="dCp-EG-svi">
+                    <view key="view" contentMode="scaleToFill" id="JR5-eP-Hex">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="178" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Koe-aR-sSt">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="historyCell" rowHeight="178" id="4Et-TF-z1K" customClass="MyHotelTableViewCell">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="178"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4Et-TF-z1K" id="L29-H4-J52">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="178"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="希尔顿酒店套房" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iTU-9Z-Dh2">
+                                                    <rect key="frame" x="20" y="58" width="143" height="27"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                    <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" verticalHuggingPriority="251" image="我的酒店" translatesAutoresizingMaskIntoConstraints="NO" id="3mY-4v-c5O">
+                                                    <rect key="frame" x="263" y="70" width="92" height="100"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="100" id="dHy-Mp-Xqw"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="厦门市集美区" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HeU-vB-WMF">
+                                                    <rect key="frame" x="46" y="104" width="80" height="16"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="我的" translatesAutoresizingMaskIntoConstraints="NO" id="nJP-y9-tEG">
+                                                    <rect key="frame" x="20" y="135" width="15" height="15"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="nJP-y9-tEG" secondAttribute="height" multiplier="1:1" id="opS-5O-2Cs"/>
+                                                        <constraint firstAttribute="height" constant="15" identifier="1:1" id="qao-oK-PpO"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="一人入住" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bfy-eZ-Fh4">
+                                                    <rect key="frame" x="46" y="134" width="54" height="16"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="地址" translatesAutoresizingMaskIntoConstraints="NO" id="Cdn-a5-SRk">
+                                                    <rect key="frame" x="20" y="105" width="15" height="15"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="Cdn-a5-SRk" secondAttribute="height" multiplier="1:1" id="5v1-zl-3p6"/>
+                                                        <constraint firstAttribute="height" constant="15" identifier="1:1" id="aYG-DR-Mz8"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2017-8-23    2017-8-24" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VWv-s6-6og">
+                                                    <rect key="frame" x="46" y="160" width="146" height="16"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="时间" translatesAutoresizingMaskIntoConstraints="NO" id="FUw-Hv-vQE">
+                                                    <rect key="frame" x="20" y="161" width="15" height="15"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="15" identifier="1:1" id="nfM-p6-Bv7"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="3mY-4v-c5O" secondAttribute="trailing" constant="20" id="29g-eP-tP8"/>
+                                                <constraint firstItem="nJP-y9-tEG" firstAttribute="centerX" secondItem="Cdn-a5-SRk" secondAttribute="centerX" id="3C4-Df-O6W"/>
+                                                <constraint firstItem="bfy-eZ-Fh4" firstAttribute="centerY" secondItem="nJP-y9-tEG" secondAttribute="centerY" id="3Jn-H3-7Eq"/>
+                                                <constraint firstItem="Cdn-a5-SRk" firstAttribute="leading" secondItem="iTU-9Z-Dh2" secondAttribute="leading" id="AIc-kv-hV7"/>
+                                                <constraint firstItem="3mY-4v-c5O" firstAttribute="leading" secondItem="iTU-9Z-Dh2" secondAttribute="trailing" constant="100" id="APN-9j-YTJ"/>
+                                                <constraint firstItem="VWv-s6-6og" firstAttribute="top" secondItem="bfy-eZ-Fh4" secondAttribute="bottom" constant="10" id="BFk-sS-QWL"/>
+                                                <constraint firstItem="HeU-vB-WMF" firstAttribute="bottom" secondItem="3mY-4v-c5O" secondAttribute="bottom" constant="-50" id="GG8-Nb-UO1"/>
+                                                <constraint firstItem="HeU-vB-WMF" firstAttribute="centerY" secondItem="Cdn-a5-SRk" secondAttribute="centerY" id="GOs-ZV-vjz"/>
+                                                <constraint firstItem="FUw-Hv-vQE" firstAttribute="width" secondItem="FUw-Hv-vQE" secondAttribute="height" multiplier="1:1" id="M0j-zD-0qh"/>
+                                                <constraint firstItem="bfy-eZ-Fh4" firstAttribute="top" secondItem="HeU-vB-WMF" secondAttribute="bottom" constant="14" id="TwU-aX-QO1"/>
+                                                <constraint firstItem="HeU-vB-WMF" firstAttribute="leading" secondItem="Cdn-a5-SRk" secondAttribute="trailing" multiplier="1:1" constant="11" id="UWp-mW-oVt"/>
+                                                <constraint firstItem="VWv-s6-6og" firstAttribute="centerY" secondItem="FUw-Hv-vQE" secondAttribute="centerY" id="X6J-0s-9Me"/>
+                                                <constraint firstItem="VWv-s6-6og" firstAttribute="leading" secondItem="FUw-Hv-vQE" secondAttribute="trailing" multiplier="1:1" constant="11" id="hGW-MH-3w5"/>
+                                                <constraint firstItem="iTU-9Z-Dh2" firstAttribute="leading" secondItem="L29-H4-J52" secondAttribute="leading" constant="20" id="lm2-xB-RhW"/>
+                                                <constraint firstItem="iTU-9Z-Dh2" firstAttribute="top" secondItem="L29-H4-J52" secondAttribute="topMargin" constant="50" id="mJ0-dR-Bxt"/>
+                                                <constraint firstItem="FUw-Hv-vQE" firstAttribute="centerX" secondItem="nJP-y9-tEG" secondAttribute="centerX" id="oei-0J-l8p"/>
+                                                <constraint firstItem="bfy-eZ-Fh4" firstAttribute="leading" secondItem="nJP-y9-tEG" secondAttribute="trailing" multiplier="1:1" constant="11" id="q8U-xR-2FK"/>
+                                                <constraint firstItem="Cdn-a5-SRk" firstAttribute="top" secondItem="iTU-9Z-Dh2" secondAttribute="bottom" constant="20" id="uJI-y9-j54"/>
+                                                <constraint firstItem="3mY-4v-c5O" firstAttribute="top" secondItem="L29-H4-J52" secondAttribute="top" constant="70" id="wBQ-31-Rgy"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="locationLabel" destination="HeU-vB-WMF" id="hm5-dX-Ebp"/>
+                                            <outlet property="myHotelLabel" destination="iTU-9Z-Dh2" id="eDD-0M-u84"/>
+                                            <outlet property="peopleNumLabel" destination="bfy-eZ-Fh4" id="XF6-1v-IyY"/>
+                                            <outlet property="timeLabel" destination="VWv-s6-6og" id="9Mm-r8-aZo"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="Nr1-pn-rmh" id="m4E-G9-Tob"/>
+                                    <outlet property="delegate" destination="Nr1-pn-rmh" id="gEX-JI-bgN"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" title="我的酒店" id="s7D-ST-7r2"/>
+                    <connections>
+                        <outlet property="MyHotelTableView" destination="Koe-aR-sSt" id="YbG-04-ad0"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="PEF-17-RXZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QjL-0o-bvM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-108" y="109"/>
+            <point key="canvasLocation" x="1871.2" y="44.527736131934034"/>
         </scene>
-        <!--Pay View Controller-->
-        <scene sceneID="6H5-LF-x1M">
+        <!--Navigation Controller-->
+        <scene sceneID="dGR-O3-DDj">
             <objects>
-                <viewController id="FV0-da-DvJ" customClass="PayViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="rnY-g8-iXl"/>
-                        <viewControllerLayoutGuide type="bottom" id="Rt2-5o-lfS"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Ihq-9W-kJs">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="4YW-lP-Xhf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="pVC-63-VbO" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ylr-b8-9SQ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Nr1-pn-rmh" kind="relationship" relationship="rootViewController" id="Zzd-pX-rJJ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="i7V-Il-S5j" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="591" y="108"/>
+            <point key="canvasLocation" x="932" y="44.527736131934034"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="地址" width="33" height="31"/>
+        <image name="我的" width="26" height="30"/>
+        <image name="我的酒店" width="39" height="40"/>
+        <image name="时间" width="27" height="27"/>
+    </resources>
 </document>

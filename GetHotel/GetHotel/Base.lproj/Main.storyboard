@@ -129,7 +129,7 @@
                                             <constraint firstAttribute="width" secondItem="Yxy-ko-qpv" secondAttribute="height" multiplier="1:1" id="PzR-cj-EV7"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="小葵" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X5E-mb-ftQ">
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="小葵" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X5E-mb-ftQ">
                                         <rect key="frame" x="130" y="120" width="35" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -141,12 +141,24 @@
                                         <color key="textColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3pM-Kh-iuY">
+                                        <rect key="frame" x="130" y="120" width="35" height="33"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <state key="normal" title="登录">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="loginBtn:forEvent:" destination="J22-wf-u5d" eventType="touchUpInside" id="3y8-7y-rOu"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="tEz-Q1-FxD" firstAttribute="top" secondItem="X5E-mb-ftQ" secondAttribute="bottom" constant="20" id="86g-Nq-Sd0"/>
                                     <constraint firstItem="Yxy-ko-qpv" firstAttribute="leading" secondItem="W2U-6S-chl" secondAttribute="leading" constant="15" id="AZV-uX-GdJ"/>
+                                    <constraint firstItem="X5E-mb-ftQ" firstAttribute="leading" secondItem="3pM-Kh-iuY" secondAttribute="leading" id="OrO-TD-oRp"/>
                                     <constraint firstItem="X5E-mb-ftQ" firstAttribute="leading" secondItem="Yxy-ko-qpv" secondAttribute="trailing" constant="15" id="UZo-2x-zyp"/>
+                                    <constraint firstItem="3pM-Kh-iuY" firstAttribute="top" secondItem="W2U-6S-chl" secondAttribute="top" constant="120" id="gR4-Bv-6hv"/>
                                     <constraint firstItem="X5E-mb-ftQ" firstAttribute="top" secondItem="W2U-6S-chl" secondAttribute="top" constant="120" id="lwm-Qm-E5t"/>
                                     <constraint firstItem="tEz-Q1-FxD" firstAttribute="leading" secondItem="X5E-mb-ftQ" secondAttribute="leading" id="rZe-sA-qVU"/>
                                     <constraint firstItem="Yxy-ko-qpv" firstAttribute="height" secondItem="W2U-6S-chl" secondAttribute="height" multiplier="5:11" id="s06-G9-gnn"/>
@@ -166,13 +178,13 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="酒店" translatesAutoresizingMaskIntoConstraints="NO" id="3bm-lZ-Y5g">
-                                                    <rect key="frame" x="38" y="3.5" width="37.5" height="37.5"/>
+                                                    <rect key="frame" x="38" y="6" width="32.5" height="32.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="3bm-lZ-Y5g" secondAttribute="height" multiplier="1:1" id="HFj-bh-5Bc"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我的酒店" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0nD-4u-Ayc">
-                                                    <rect key="frame" x="90.5" y="12" width="69.5" height="21"/>
+                                                    <rect key="frame" x="85.5" y="12" width="69.5" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -182,7 +194,7 @@
                                                 <constraint firstItem="3bm-lZ-Y5g" firstAttribute="centerY" secondItem="JMg-eN-Ig4" secondAttribute="centerY" id="K7x-wZ-6cq"/>
                                                 <constraint firstItem="3bm-lZ-Y5g" firstAttribute="leading" secondItem="JMg-eN-Ig4" secondAttribute="leadingMargin" constant="30" id="RkE-aN-vDN"/>
                                                 <constraint firstItem="0nD-4u-Ayc" firstAttribute="centerY" secondItem="JMg-eN-Ig4" secondAttribute="centerY" id="aA6-lg-uFI"/>
-                                                <constraint firstItem="3bm-lZ-Y5g" firstAttribute="height" secondItem="JMg-eN-Ig4" secondAttribute="height" multiplier="6:7" id="bx3-nJ-VL7"/>
+                                                <constraint firstItem="3bm-lZ-Y5g" firstAttribute="height" secondItem="JMg-eN-Ig4" secondAttribute="height" multiplier="3:4" id="bx3-nJ-VL7"/>
                                                 <constraint firstItem="0nD-4u-Ayc" firstAttribute="leading" secondItem="3bm-lZ-Y5g" secondAttribute="trailing" constant="15" id="nQo-N3-zfh"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -213,6 +225,7 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="dengjiLabel" destination="tEz-Q1-FxD" id="lfB-2H-88i"/>
+                        <outlet property="loginLabel" destination="3pM-Kh-iuY" id="zNA-sV-xDm"/>
                         <outlet property="myTabelView" destination="D3R-Ve-FZi" id="Ok1-vr-Rdv"/>
                         <outlet property="nameLable" destination="X5E-mb-ftQ" id="Zhb-D4-mKp"/>
                         <outlet property="touxiangImage" destination="Yxy-ko-qpv" id="wit-PY-oTD"/>
