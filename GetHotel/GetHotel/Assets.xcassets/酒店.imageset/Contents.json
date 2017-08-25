@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "7F33795F946F60778BE277D701229A4E.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "hotel.png",
       "scale" : "2x"
     },
     {
