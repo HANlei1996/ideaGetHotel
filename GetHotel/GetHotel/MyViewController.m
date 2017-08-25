@@ -99,10 +99,11 @@
     //取消细胞的选中状态
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
+
         if ([Utilities loginCheck]) {
             switch (indexPath.section) {
                 case 0:
-                    [self performSegueWithIdentifier:@"" sender:self];
+                    [self performSegueWithIdentifier:@"wdjd" sender:self];
                     break;
                 case 1:
                     [self performSegueWithIdentifier:@"wdhk" sender:self];
@@ -114,21 +115,22 @@
                     [self performSegueWithIdentifier:@"zhsz" sender:self];
                     break;
                 case 4:
-                    [self performSegueWithIdentifier:@"syxy" sender:self];
+                   [self performSegueWithIdentifier:@"syxy" sender:self];
                     break;
                     
                 default:
-                    [self performSegueWithIdentifier:@"lxkf" sender:self];
+                   [self performSegueWithIdentifier:@"lxkf" sender:self];
                     break;
             }
-        }else{
-            
+       }else{
+            //[self performSegueWithIdentifier:@"syxy" sender:self];
+           //[self performSegueWithIdentifier:@"lxkf" sender:self];
             UINavigationController *signNavi=[Utilities getStoryboardInstance:
                                               @"Sign"byIdentity:@"SignNavi"];
             [self presentViewController:signNavi animated:YES completion:nil];
             
         }
-    }
+        }
 
 
 - (IBAction)loginBtn:(UIButton *)sender forEvent:(UIEvent *)event {

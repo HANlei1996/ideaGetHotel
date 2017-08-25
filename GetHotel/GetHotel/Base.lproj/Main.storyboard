@@ -234,11 +234,22 @@
                         <segue destination="rfI-Ul-Fxy" kind="show" identifier="syxy" id="rjH-zy-LIc"/>
                         <segue destination="3t6-of-MKI" kind="show" identifier="lxkf" id="jXH-g2-3Yw"/>
                         <segue destination="lO8-eX-iC7" kind="show" identifier="zhsz" id="Vu5-Qd-VdV"/>
+                        <segue destination="hIU-DG-93u" kind="show" identifier="wdjd" id="OB3-yS-WQu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RAJ-6T-PXJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-124" y="526.6866566716642"/>
+        </scene>
+        <!--MyHotel-->
+        <scene sceneID="QQ4-m0-ebf">
+            <objects>
+                <viewControllerPlaceholder storyboardName="MyHotel" id="hIU-DG-93u" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="wXP-pT-oiv"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lDk-hX-wEG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="388" y="139"/>
         </scene>
         <!--Sign-->
         <scene sceneID="w6b-4j-364">

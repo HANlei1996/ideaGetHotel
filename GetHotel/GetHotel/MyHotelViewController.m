@@ -27,7 +27,7 @@
     _arr = @[@{@"title":@"",@"content":@""}];
     _MyHotelTableView.tableFooterView = [UIView new];
     
-    [self setNavigationItem];
+    [self naviConfig];
     [self setSegment];
 }
 
@@ -36,26 +36,34 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-//设置导航栏样式
-- (void)setNavigationItem{
+//当前页面将要显示的时候，显示导航栏
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:NO animated:animated];
+}
+// 这个方法专门做导航条的控制
+-(void)naviConfig{
+    //设置导航条标题文字
+    //self.navigationItem.title=@"活动列表";
     //设置导航条的颜色（风格颜色）
     [self.navigationController.navigationBar setBarTintColor:[UIColor colorWithRed:20/255.0 green:100/255.0 blue:255.0 alpha:1.0]];
     //设置导航条的标题颜色
     self.navigationController.navigationBar.titleTextAttributes=@{NSForegroundColorAttributeName : [UIColor whiteColor] };
-    //实例化一个button 类型为UIButtonTypeSystem
-    UIButton *leftBtn = [UIButton buttonWithType:UIButtonTypeSystem];
-    //设置位置大小
-    leftBtn.frame = CGRectMake(0, 0, 30, 30);
-    //设置其背景图片为返回图片
-    [leftBtn setBackgroundImage:[UIImage imageNamed:@"返回"] forState:UIControlStateNormal];
-    //给按钮添加事件
-    [leftBtn addTarget:self action:@selector(leftButtonAction:) forControlEvents:UIControlEventTouchUpInside];
-    
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:leftBtn];
+    //设置导航条是否隐藏
+    self.navigationController.navigationBar.hidden=NO;
+    //设置导航条上按钮的风格颜色
+    self.navigationController.navigationBar.tintColor=[UIColor whiteColor];
+    //设置是否需要毛玻璃效果
+    self.navigationController.navigationBar.translucent=YES;
+    //为导航条左上角创建一个按钮
+    UIBarButtonItem *left = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemStop target:self action:@selector(backAction)];
+    self.navigationItem.leftBarButtonItem = left;
+
 }
-//自定的返回按钮的事件
-- (void)leftButtonAction: (UIButton *)sender{
-    [self.navigationController popViewControllerAnimated:YES];
+//用Model的方式返回上一页
+- (void)backAction {
+    [self dismissViewControllerAnimated:YES completion:nil];
+  // [self.navigationController popViewControllerAnimated:YES];
 }
 #pragma mark - setSegment设置菜单栏
 //初始化菜单栏的方法
