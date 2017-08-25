@@ -36,11 +36,11 @@
     //设置导航条的颜色（风格颜色）
     [self.navigationController.navigationBar setBarTintColor:[UIColor colorWithRed:20/255.0 green:100/255.0 blue:255.0 alpha:1.0]];
     //设置导航条的标题颜色
-    self.navigationController.navigationBar.titleTextAttributes=@{NSForegroundColorAttributeName : [UIColor blueColor] };
+    self.navigationController.navigationBar.titleTextAttributes=@{NSForegroundColorAttributeName : [UIColor whiteColor] };
     //设置导航条是否隐藏
     self.navigationController.navigationBar.hidden=NO;
     //设置导航条上按钮的风格颜色
-    self.navigationController.navigationBar.tintColor=[UIColor blueColor];
+    self.navigationController.navigationBar.tintColor=[UIColor whiteColor];
     //设置是否需要毛玻璃效果
     self.navigationController.navigationBar.translucent=YES;
 }

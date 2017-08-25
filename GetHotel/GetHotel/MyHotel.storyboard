@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="pVC-63-VbO">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="pVC-63-VbO">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -136,7 +136,7 @@
         <!--Navigation Controller-->
         <scene sceneID="dGR-O3-DDj">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="pVC-63-VbO" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="myhotel" automaticallyAdjustsScrollViewInsets="NO" id="pVC-63-VbO" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ylr-b8-9SQ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -154,7 +154,7 @@
     </scenes>
     <resources>
         <image name="地址" width="33" height="31"/>
-        <image name="我的" width="26" height="30"/>
+        <image name="我的" width="22" height="22"/>
         <image name="我的酒店" width="39" height="40"/>
         <image name="时间" width="27" height="27"/>
     </resources>
