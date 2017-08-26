@@ -80,7 +80,7 @@
     // Pass the selected object to the new view controller.
 }
 */
-<<<<<<< HEAD
+
 - (void)textChange: (UITextField *)textField{
     //当文本框中的内容改变时判断内容长度是否为0，是：禁用按钮   否：启用按钮
     if (_usernameTextField.text.length != 0 && textField.text.length != 0) {
@@ -91,13 +91,13 @@
         _signBtn.backgroundColor = UIColorFromRGB(200, 200, 200);
     }
 }
-=======
+
 
 #pragma mark - request
 
 #pragma mark - Btn
 
->>>>>>> 208e3cb0fee6a4d88fcb0913363583ccab706756
+
 - (IBAction)signBtnAction:(UIButton *)sender forEvent:(UIEvent *)event {
     
     if (_usernameTextField.text.length==0) {
