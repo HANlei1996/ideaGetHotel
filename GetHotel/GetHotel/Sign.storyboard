@@ -142,6 +142,7 @@
                     <navigationItem key="navigationItem" title="会员登录" id="NWU-3G-yyo"/>
                     <connections>
                         <outlet property="passwordnameTextField" destination="5HG-Ue-lbI" id="gLT-Rf-xh0"/>
+                        <outlet property="signBtn" destination="jWx-BJ-ubw" id="YSL-d3-lsh"/>
                         <outlet property="usernameTextField" destination="pIk-kg-RyT" id="OAl-Db-NRt"/>
                     </connections>
                 </viewController>
@@ -304,6 +305,7 @@
                     <connections>
                         <outlet property="confirmTextField" destination="dYJ-PC-vGO" id="Vgl-f5-fVK"/>
                         <outlet property="passWordTextField" destination="p7W-Zb-7yk" id="mIO-pS-pk3"/>
+                        <outlet property="signUpBtn" destination="bt5-Y4-q4l" id="XkZ-HV-vjL"/>
                         <outlet property="userTelTextField" destination="VKE-B8-yt5" id="ujX-Cl-PMc"/>
                     </connections>
                 </viewController>
