@@ -68,6 +68,10 @@
 }
 */
 
+#pragma mark - request
+
+#pragma mark - Btn
+
 - (IBAction)signBtnAction:(UIButton *)sender forEvent:(UIEvent *)event {
     if (_usernameTextField.text.length==0) {
         [Utilities popUpAlertViewWithMsg:@"请输入你的手机号" andTitle:nil onView:self];
