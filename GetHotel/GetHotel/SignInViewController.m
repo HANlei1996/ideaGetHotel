@@ -12,7 +12,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *usernameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordnameTextField;
 - (IBAction)signBtnAction:(UIButton *)sender forEvent:(UIEvent *)event;
-@property (strong,nonatomic) UIActivityIndicatorView *avi;
+@property (weak, nonatomic) IBOutlet UIButton *signBtn;
+//@property (strong,nonatomic) UIActivityIndicatorView *avi;
 @end
 
 @implementation SignInViewController
@@ -22,6 +23,17 @@
     [self naviConfig];
     [self uiLayout];
     // Do any additional setup after loading the view.
+    _signBtn.enabled = NO;
+    _signBtn.backgroundColor = UIColorFromRGB(200, 200, 200);
+    
+    
+    if (![[Utilities getUserDefaults:@"tel"] isKindOfClass:[NSNull class]] && [Utilities getUserDefaults:@"tel"] != nil) {
+        _usernameTextField.text = [Utilities getUserDefaults:@"tel"];
+    }
+    
+    //添加事件监听当输入框的内容改变时调用textChange:方法
+    [_usernameTextField addTarget:self action:@selector(textChange:) forControlEvents:UIControlEventEditingChanged];
+    [_passwordnameTextField addTarget:self action:@selector(textChange:) forControlEvents:UIControlEventEditingChanged];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -31,7 +43,8 @@
 -(void)naviConfig{
     
     //设置导航条的颜色（风格颜色）
-    [self.navigationController.navigationBar setBarTintColor:[UIColor colorWithRed:20/255.0 green:100/255.0 blue:255/255.0 alpha:1.0]];
+    //[self.navigationController.navigationBar setBarTintColor:[UIColor colorWithRed:20/255.0 green:100/255.0 blue:255/255.0 alpha:1.0]];
+    self.navigationController.navigationBar.barTintColor=UIColorFromRGB(20, 100, 255);
     //设置导航条的标题颜色
     self.navigationController.navigationBar.titleTextAttributes=@{NSForegroundColorAttributeName : [UIColor whiteColor] };
     //设置导航条是否隐藏
@@ -51,10 +64,10 @@
 }
 -(void)uiLayout{
     //判断是否存在用户名记忆体
-    if (![[Utilities getUserDefaults:@"Username"] isKindOfClass:[NSNull class]]) {
-        if ([Utilities getUserDefaults:@"Username"] != nil) {
+    if (![[Utilities getUserDefaults:@"tel"] isKindOfClass:[NSNull class]]) {
+        if ([Utilities getUserDefaults:@"tel"] != nil) {
             //将他显示在用户名输入框
-            _usernameTextField.text=[Utilities getUserDefaults:@"Username"];
+            _usernameTextField.text=[Utilities getUserDefaults:@"tel"];
         }
     }
 }
@@ -67,9 +80,26 @@
     // Pass the selected object to the new view controller.
 }
 */
+<<<<<<< HEAD
+- (void)textChange: (UITextField *)textField{
+    //当文本框中的内容改变时判断内容长度是否为0，是：禁用按钮   否：启用按钮
+    if (_usernameTextField.text.length != 0 && textField.text.length != 0) {
+        _signBtn.enabled = YES;
+        _signBtn.backgroundColor = UIColorFromRGB(99, 163, 210);
+    }else{
+        _signBtn.enabled = NO;
+        _signBtn.backgroundColor = UIColorFromRGB(200, 200, 200);
+    }
+}
+=======
 
+#pragma mark - request
+
+#pragma mark - Btn
+
+>>>>>>> 208e3cb0fee6a4d88fcb0913363583ccab706756
 - (IBAction)signBtnAction:(UIButton *)sender forEvent:(UIEvent *)event {
-    [self request];
+    
     if (_usernameTextField.text.length==0) {
         [Utilities popUpAlertViewWithMsg:@"请输入你的手机号" andTitle:nil onView:self];
         return;
@@ -91,20 +121,7 @@
     }
     //无输入异常的情况，开始正式执行登录接口
     //[self readyForEncoding];
-    
-}
-//键盘收回
-- (void) touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
-    //让根视图结束编辑状态达到收起键盘的目的
-    [self.view endEditing:YES];
-   
-}
-//按return收回键盘
-- (BOOL)textFieldShouldReturn:(UITextField *)textField{
-    if (textField == _usernameTextField || textField == _passwordnameTextField) {
-        [textField resignFirstResponder];
-    }
-    return YES;
+     [self request];
 }
 #pragma mark - request
 - (void)request{
@@ -114,8 +131,8 @@
     NSDictionary *para = @{@"tel":_usernameTextField.text,@"pwd":_passwordnameTextField.text};
     NSLog(@"参数:%@",para);
     //网络请求
-    [RequestAPI requestURL:@"/login" withParameters:para andHeader:nil byMethod:kPost andSerializer:kForm success:^(id responseObject) {
-        //NSLog(@"responseObject:%@", responseObject);
+    [RequestAPI requestURL:@"/login" withParameters:para andHeader:nil byMethod:kPost andSerializer:kJson success:^(id responseObject) {
+        NSLog(@"responseObject:%@", responseObject);
         //当网络请求成功时让蒙层消失
         [avi stopAnimating];
         
@@ -147,9 +164,22 @@
         }
         
     } failure:^(NSInteger statusCode, NSError *error) {
-        [_avi stopAnimating];
+        [avi stopAnimating];
         [Utilities popUpAlertViewWithMsg:@"网络错误,请稍等再试" andTitle:@"提示" onView:self];
         
     }];
+}
+//键盘收回
+- (void) touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    //让根视图结束编辑状态达到收起键盘的目的
+    [self.view endEditing:YES];
+    
+}
+//按return收回键盘
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+    if (textField == _usernameTextField || textField == _passwordnameTextField) {
+        [textField resignFirstResponder];
+    }
+    return YES;
 }
 @end
