@@ -12,7 +12,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *usernameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordnameTextField;
 - (IBAction)signBtnAction:(UIButton *)sender forEvent:(UIEvent *)event;
-
+@property (strong,nonatomic) UIActivityIndicatorView *avi;
 @end
 
 @implementation SignInViewController
@@ -31,7 +31,7 @@
 -(void)naviConfig{
     
     //设置导航条的颜色（风格颜色）
-    [self.navigationController.navigationBar setBarTintColor:[UIColor colorWithRed:20/255.0 green:100/255.0 blue:255.0 alpha:1.0]];
+    [self.navigationController.navigationBar setBarTintColor:[UIColor colorWithRed:20/255.0 green:100/255.0 blue:255/255.0 alpha:1.0]];
     //设置导航条的标题颜色
     self.navigationController.navigationBar.titleTextAttributes=@{NSForegroundColorAttributeName : [UIColor whiteColor] };
     //设置导航条是否隐藏
@@ -73,6 +73,7 @@
 #pragma mark - Btn
 
 - (IBAction)signBtnAction:(UIButton *)sender forEvent:(UIEvent *)event {
+    [self request];
     if (_usernameTextField.text.length==0) {
         [Utilities popUpAlertViewWithMsg:@"请输入你的手机号" andTitle:nil onView:self];
         return;
@@ -93,13 +94,14 @@
         return;
     }
     //无输入异常的情况，开始正式执行登录接口
-   // [self readyForEncoding];
+    //[self readyForEncoding];
     
 }
 //键盘收回
 - (void) touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
     //让根视图结束编辑状态达到收起键盘的目的
     [self.view endEditing:YES];
+   
 }
 //按return收回键盘
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
@@ -107,5 +109,51 @@
         [textField resignFirstResponder];
     }
     return YES;
+}
+#pragma mark - request
+- (void)request{
+    //点击按钮的时候创建一个蒙层，并显示在当前页面
+    UIActivityIndicatorView *avi = [Utilities getCoverOnView:self.view];
+    //参数
+    NSDictionary *para = @{@"tel":_usernameTextField.text,@"pwd":_passwordnameTextField.text};
+    NSLog(@"参数:%@",para);
+    //网络请求
+    [RequestAPI requestURL:@"/login" withParameters:para andHeader:nil byMethod:kPost andSerializer:kForm success:^(id responseObject) {
+        //NSLog(@"responseObject:%@", responseObject);
+        //当网络请求成功时让蒙层消失
+        [avi stopAnimating];
+        
+        if ([responseObject[@"flag"] isEqualToString:@"success"]) {
+            NSDictionary *result = responseObject[@"result"];
+            NSString *token = result[@"token"];
+            NSLog(@"token: %@", token);
+            //把token存入单例化全局变量中
+            [[StorageMgr singletonStorageMgr] removeObjectForKey:@"token"];
+            [[StorageMgr singletonStorageMgr] addKey:@"token" andValue:token];
+            
+            //客户的电话号码是否要加密处理，根据接口返回的hidePhone判断。把hidePhone处理后存入单例化全局变量中，在其他有客户信息显示的页面上判断
+            NSDictionary *agent = result[@"agent"];
+            BOOL showPhone = [agent[@"hidePhone"] boolValue];
+            
+            [[StorageMgr singletonStorageMgr] removeObjectForKey:@"showPhone"];
+            [[StorageMgr singletonStorageMgr] addKey:@"showPhone" andValue:@(showPhone)];
+            
+            //保存用户名
+            [Utilities removeUserDefaults:@"tel"];
+            [Utilities setUserDefaults:@"pwd" content:_usernameTextField.text];
+            
+            _passwordnameTextField.text = @"";
+            
+            [self performSegueWithIdentifier:@"loginToTask" sender:self];
+        }else{
+            [Utilities popUpAlertViewWithMsg:responseObject[@"message"] andTitle:@"提示" onView:self];
+            
+        }
+        
+    } failure:^(NSInteger statusCode, NSError *error) {
+        [_avi stopAnimating];
+        [Utilities popUpAlertViewWithMsg:@"网络错误,请稍等再试" andTitle:@"提示" onView:self];
+        
+    }];
 }
 @end
