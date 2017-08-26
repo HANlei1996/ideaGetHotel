@@ -100,7 +100,7 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
 
-        if ([Utilities loginCheck]) {
+       // if ([Utilities loginCheck]) {
             switch (indexPath.section) {
                 case 0:
                     [self performSegueWithIdentifier:@"wdjd" sender:self];
@@ -122,14 +122,14 @@
                    [self performSegueWithIdentifier:@"lxkf" sender:self];
                     break;
             }
-       }else{
+      // }else{
             //[self performSegueWithIdentifier:@"syxy" sender:self];
            //[self performSegueWithIdentifier:@"lxkf" sender:self];
-            UINavigationController *signNavi=[Utilities getStoryboardInstance:
-                                              @"Sign"byIdentity:@"SignNavi"];
-            [self presentViewController:signNavi animated:YES completion:nil];
-            
-        }
+            //UINavigationController *signNavi=[Utilities getStoryboardInstance:
+           //                                   @"Sign"byIdentity:@"SignNavi"];
+//[self presentViewController:signNavi animated:YES completion:nil];
+    
+      //  }
         }
 
 
