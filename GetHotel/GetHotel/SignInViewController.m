@@ -21,7 +21,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self naviConfig];
-    [self uiLayout];
+    
     // Do any additional setup after loading the view.
     _signBtn.enabled = NO;
     _signBtn.backgroundColor = UIColorFromRGB(200, 200, 200);
@@ -61,15 +61,6 @@
 - (void)backAction {
     [self dismissViewControllerAnimated:YES completion:nil];
     //[self.navigationController popViewControllerAnimated:YES];
-}
--(void)uiLayout{
-    //判断是否存在用户名记忆体
-    if (![[Utilities getUserDefaults:@"tel"] isKindOfClass:[NSNull class]]) {
-        if ([Utilities getUserDefaults:@"tel"] != nil) {
-            //将他显示在用户名输入框
-            _usernameTextField.text=[Utilities getUserDefaults:@"tel"];
-        }
-    }
 }
 /*
 #pragma mark - Navigation
