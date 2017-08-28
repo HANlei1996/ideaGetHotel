@@ -70,11 +70,11 @@
             </objects>
             <point key="canvasLocation" x="-586" y="-194"/>
         </scene>
-        <!--Item-->
+        <!--酒店-->
         <scene sceneID="OPg-BR-Yb9">
             <objects>
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="kCC-Wj-FME" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="YzP-nI-mq0"/>
+                    <tabBarItem key="tabBarItem" title="酒店" image="酒店" id="YzP-nI-mq0"/>
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="9Pa-pJ-MUo">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
@@ -146,7 +146,7 @@
                                     <constraint firstItem="Yxy-ko-qpv" firstAttribute="top" secondItem="W2U-6S-chl" secondAttribute="top" constant="90" id="uVP-6N-uhP"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="D3R-Ve-FZi">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="D3R-Ve-FZi">
                                 <rect key="frame" x="0.0" y="240" width="375" height="378"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="sectionIndexBackgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
