@@ -48,7 +48,19 @@
     // Saves changes in the application's managed object context before the application terminates.
     [self saveContext];
 }
-
+//当从别的APP跳转到本APP的情况下调用
+-(BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(nullable NSString *)sourceApplication annotation:(nonnull id)annotation{
+    //判断是不是从支付宝APP跳转到本APP
+    if ([url.host isEqualToString:@"safepay"]) {
+        //获取支付宝支付的结果情况
+//        [[AlipaySDK d] ];
+    }
+    
+    return YES;
+}
+-(BOOL)application:(UIApplication *)application openURL:(NSURL *)url options:(nonnull NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options{
+    return YES;
+}
 
 #pragma mark - Core Data stack
 
