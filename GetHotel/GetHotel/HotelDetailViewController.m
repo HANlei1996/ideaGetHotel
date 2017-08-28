@@ -8,6 +8,7 @@
 
 #import "HotelDetailViewController.h"
 #import "Constants.h"
+
 @interface HotelDetailViewController (){
     NSInteger flag;
 }
@@ -47,6 +48,11 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+//当前页面将要显示的时候，显示导航栏
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:NO animated:animated];
 }
 //设置导航栏样式
 - (void)setNavigationItem{
@@ -165,5 +171,9 @@
 }
 
 - (IBAction)BuyAction:(UIButton *)sender forEvent:(UIEvent *)event {
+    
+    [self performSegueWithIdentifier:@"pay" sender:self];
+
 }
 @end
+
