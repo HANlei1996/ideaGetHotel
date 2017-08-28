@@ -81,7 +81,7 @@
                                         <rect key="frame" x="238" y="226" width="77" height="30"/>
                                         <state key="normal" title="注册新用户"/>
                                         <connections>
-                                            <segue destination="NUX-sB-svC" kind="show" id="9FF-0E-PcJ"/>
+                                            <segue destination="NUX-sB-svC" kind="show" identifier="SignInToMy" id="9FF-0E-PcJ"/>
                                         </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="1" translatesAutoresizingMaskIntoConstraints="NO" id="wQj-tu-61B">
@@ -288,6 +288,7 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="signUpAction:forEvent:" destination="NUX-sB-svC" eventType="touchUpInside" id="27m-gb-VGU"/>
+                                    <segue destination="Sse-4T-fgo" kind="show" identifier="SignUpToSignIn" id="Kh5-kf-Cxc"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -337,4 +338,7 @@
         <image name="3" width="87" height="78"/>
         <image name="人像" width="166" height="166"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="Kh5-kf-Cxc"/>
+    </inferredMetricsTieBreakers>
 </document>

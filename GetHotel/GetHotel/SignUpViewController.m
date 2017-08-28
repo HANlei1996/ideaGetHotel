@@ -14,7 +14,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *confirmTextField;
 - (IBAction)signUpAction:(UIButton *)sender forEvent:(UIEvent *)event;
 @property (weak, nonatomic) IBOutlet UIButton *signUpBtn;
-
+@property (strong,nonatomic) UIActivityIndicatorView *avi;
 @end
 
 @implementation SignUpViewController
@@ -72,7 +72,7 @@
 */
 
 - (IBAction)signUpAction:(UIButton *)sender forEvent:(UIEvent *)event {
-    [self request];
+    
     if (_userTelTextField.text.length== 0) {
         [Utilities popUpAlertViewWithMsg:@"请输入你的手机号" andTitle:nil onView:self];
         return;
@@ -98,54 +98,32 @@
         // _passWordTextField.text = @"";
         _confirmTextField.text = @"";
     }
-    
+    [self networkRequest];
 }
-- (void)request{
-    //点击按钮的时候创建一个蒙层，并显示在当前页面
-    UIActivityIndicatorView *avi = [Utilities getCoverOnView:self.view];
-    //参数
-    NSDictionary *para = @{@"tel":_userTelTextField.text,@"pwd":_passWordTextField.text};
+-(void)networkRequest{
+    _avi = [Utilities getCoverOnView:self.view];
+    NSDictionary *para = @{@"tel":_passWordTextField.text,@"pwd":_passWordTextField.text};
     NSLog(@"参数:%@",para);
-    //网络请求
-    [RequestAPI requestURL:@"/register" withParameters:para andHeader:nil byMethod:kPost andSerializer:kJson success:^(id responseObject) {
-        NSLog(@"responseObject:%@", responseObject);
-        //当网络请求成功时让蒙层消失
-        [avi stopAnimating];
-        
-        if ([responseObject[@"flag"] isEqualToString:@"success"]) {
-            NSDictionary *result = responseObject[@"result"];
-            NSString *token = result[@"token"];
-            NSLog(@"token: %@", token);
-            //把token存入单例化全局变量中
-            [[StorageMgr singletonStorageMgr] removeObjectForKey:@"token"];
-            [[StorageMgr singletonStorageMgr] addKey:@"token" andValue:token];
-            
-            //客户的电话号码是否要加密处理，根据接口返回的hidePhone判断。把hidePhone处理后存入单例化全局变量中，在其他有客户信息显示的页面上判断
-            NSDictionary *agent = result[@"agent"];
-            BOOL showPhone = [agent[@"hidePhone"] boolValue];
-            
-            [[StorageMgr singletonStorageMgr] removeObjectForKey:@"showPhone"];
-            [[StorageMgr singletonStorageMgr] addKey:@"showPhone" andValue:@(showPhone)];
-            
-            //保存用户名
-            [Utilities removeUserDefaults:@"tel"];
-            [Utilities setUserDefaults:@"pwd" content:_userTelTextField.text];
-            
-            _passWordTextField.text = @"";
-            
-            [self performSegueWithIdentifier:@"loginToTask" sender:self];
-        }else{
-            [Utilities popUpAlertViewWithMsg:responseObject[@"message"] andTitle:@"提示" onView:self];
-            
+    [RequestAPI requestURL:@"/register" withParameters:para andHeader:nil byMethod:kPost andSerializer:kForm success:^(id responseObject) {
+        [_avi stopAnimating];
+        NSLog(@"%@",responseObject);
+        if ([responseObject[@"result"] integerValue] ==1) {
+            NSLog(@"responseObject:%@",responseObject);
+            [Utilities popUpAlertViewWithMsg:@"恭喜你注册成功" andTitle:nil onView:self];
+            [self performSegueWithIdentifier:@"SignUpToSignIn" sender:self];
+        } else{
+            [_avi stopAnimating];
+            NSString *errorMsg = [ErrorHandler getProperErrorString:[responseObject [@"result"]integerValue]];
+            [Utilities popUpAlertViewWithMsg:errorMsg andTitle:@"提示" onView:self];
         }
         
     } failure:^(NSInteger statusCode, NSError *error) {
-        [avi stopAnimating];
-        [Utilities popUpAlertViewWithMsg:@"网络错误,请稍等再试" andTitle:@"提示" onView:self];
-        
+        [_avi stopAnimating];
+        //业务逻辑失败的情况下
+        [Utilities popUpAlertViewWithMsg:@"网络错误" andTitle:nil onView:self];
     }];
-}
-//键盘收回
+    
+}//键盘收回
 - (void) touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
     //让根视图结束编辑状态达到收起键盘的目的
     [self.view endEditing:YES];

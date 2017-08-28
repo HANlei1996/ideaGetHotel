@@ -54,6 +54,7 @@
 		8488E2BB1F4EDBD0003D8DD5 /* SignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8488E2BA1F4EDBD0003D8DD5 /* SignInViewController.m */; };
 		8488E2BE1F4EDBDF003D8DD5 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8488E2BD1F4EDBDF003D8DD5 /* SignUpViewController.m */; };
 		84B95E271F5030CC00AF5D98 /* HotelDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B95E261F5030CC00AF5D98 /* HotelDetail.m */; };
+		84DA035D1F54300C006BD6BC /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DA035C1F54300C006BD6BC /* User.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -161,6 +162,8 @@
 		8488E2BD1F4EDBDF003D8DD5 /* SignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
 		84B95E251F5030CC00AF5D98 /* HotelDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotelDetail.h; sourceTree = "<group>"; };
 		84B95E261F5030CC00AF5D98 /* HotelDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotelDetail.m; sourceTree = "<group>"; };
+		84DA035B1F54300C006BD6BC /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		84DA035C1F54300C006BD6BC /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		C25D48D47A878363B9B3B06F /* libPods-GetHotel.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GetHotel.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC276EA5669F0347448D25E1 /* Pods-GetHotel.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GetHotel.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GetHotel/Pods-GetHotel.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -394,6 +397,8 @@
 		8488E29E1F4ED744003D8DD5 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				84DA035B1F54300C006BD6BC /* User.h */,
+				84DA035C1F54300C006BD6BC /* User.m */,
 				84B95E241F50305300AF5D98 /* HotelDetail */,
 			);
 			name = Model;
@@ -668,6 +673,7 @@
 				8488E20C1F4ED3E2003D8DD5 /* AppDelegate.m in Sources */,
 				8488E28A1F4ED4B9003D8DD5 /* JSONS.m in Sources */,
 				8488E2891F4ED4B9003D8DD5 /* ErrorHandler.m in Sources */,
+				84DA035D1F54300C006BD6BC /* User.m in Sources */,
 				8488E28F1F4ED4B9003D8DD5 /* RequestAPI.m in Sources */,
 				8488E2B51F4EDB6A003D8DD5 /* PayViewController.m in Sources */,
 				8488E2BB1F4EDBD0003D8DD5 /* SignInViewController.m in Sources */,
