@@ -1,18 +1,18 @@
 //
-//  PayViewController.m
+//  HotelModel.m
 //  GetHotel
 //
-//  Created by admin on 2017/8/24.
+//  Created by admin on 2017/8/28.
 //  Copyright © 2017年 com. All rights reserved.
 //
 
-#import "PayViewController.h"
+#import "HotelModel.h"
 
-@interface PayViewController ()
+@interface HotelModel ()
 
 @end
 
-@implementation PayViewController
+@implementation HotelModel
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -22,6 +22,15 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (instancetype)initWithDict: (NSDictionary *)dict{
+  self = [super init];
+    if(self){
+        self.inTime=[[Utilities nullAndNilCheck:dict[@"inTime"] replaceBy:0]integerValue];
+        self.outTime=[[Utilities nullAndNilCheck:dict[@"inTime"] replaceBy:0]integerValue];
+           }
+    return self;
 }
 
 /*

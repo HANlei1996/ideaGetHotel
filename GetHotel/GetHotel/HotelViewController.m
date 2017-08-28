@@ -8,7 +8,10 @@
 
 #import "HotelViewController.h"
 #import "HotelsViewTableCellTableViewCell.h"
-@interface HotelViewController()<UITableViewDataSource,UITableViewDelegate>{
+#import <CoreLocation/CoreLocation.h>
+@interface HotelViewController()<UITableViewDataSource,UITableViewDelegate,CLLocationManagerDelegate>{
+    BOOL isLoading;
+    BOOL firstVisit;
     BOOL flag;
     BOOL time;
 }
@@ -23,6 +26,7 @@
 @property (weak, nonatomic) IBOutlet UIToolbar *bar;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollview;
 @property (weak, nonatomic) IBOutlet UITextField *searchText;
+@property (weak, nonatomic) IBOutlet UIButton *cityBtn;
 
 @property (weak, nonatomic) IBOutlet UIImageView *image1;
 - (IBAction)Btn2:(id)sender forEvent:(UIEvent *)event;
@@ -33,6 +37,8 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *image2;
 @property(strong,nonatomic) NSArray*arr;
+@property (strong,nonatomic) CLLocationManager *locMgr;
+@property (strong,nonatomic) CLLocation *location;
 
 @end
 
@@ -183,6 +189,40 @@
     _bar.hidden = YES;
     _picker.hidden = YES;
 }
+/*-(void)network{
+    
+    UIActivityIndicatorView *aiv=[Utilities getCoverOnView:self.view];
+    NSString *request=[NSString stringWithFormat:@"/event/%@",_activity.activityId];
+    NSMutableDictionary *parameters=[NSMutableDictionary new];
+    if([Utilities loginCheck]){
+        [parameters setObject:[[StorageMgr singletonStorageMgr] objectForKey:@"MemberId"]forKey:@"memberId"];
+        
+    }
+    [RequestAPI requestURL:request withParameters:parameters andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
+        [aiv stopAnimating];
+        if([responseObject[@"resultFlag"]integerValue] == 8001){
+            NSDictionary *result= responseObject[@"result"];
+            _activity= [[ActivityModel alloc]initWithDetailDictionary:result];
+            [self uiLayout];
+        }else{
+            NSString *errorMsg=[ErrorHandler getProperErrorString:[responseObject[@"resultFlag"]integerValue]];
+            [Utilities popUpAlertViewWithMsg:errorMsg andTitle:nil onView:self];
+            
+        }
+    } failure:^(NSInteger statusCode, NSError *error) {
+        [aiv stopAnimating];
+        //业务逻辑失败的情况下
+        [Utilities popUpAlertViewWithMsg:@"请保持网络连接畅通" andTitle:nil onView:self];
+    }];
+    
+    }
+    
+
+
+
+*/
+
+
 /*- (void)setDefaultDateForButton{
  
  NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
@@ -202,4 +242,111 @@
  [_likai setTitle:dateTomStr forState:UIControlStateNormal];
  }
  */
+
+//定位失败时
+- (void)locationManager:(CLLocationManager *)manager
+       didFailWithError:(NSError *)error{
+    if (error) {
+        switch (error.code) {
+            case kCLErrorNetwork:
+                [Utilities popUpAlertViewWithMsg:NSLocalizedString(@"NetworkError", nil) andTitle:nil onView:self];
+                break;
+            case kCLErrorDenied:
+                [Utilities popUpAlertViewWithMsg:NSLocalizedString(@"GPSDisabled", nil) andTitle:nil onView:self];
+                break;
+            case kCLErrorLocationUnknown:
+                [Utilities popUpAlertViewWithMsg:NSLocalizedString(@"LocationUnkonw", nil) andTitle:nil onView:self];
+                break;
+                
+                
+            default:[Utilities popUpAlertViewWithMsg:NSLocalizedString(@"SystemError", nil) andTitle:nil onView:self];
+                break;
+        }
+    }
+}
+//定位成功时
+- (void)locationManager:(CLLocationManager *)manager
+    didUpdateToLocation:(CLLocation *)newLocation
+           fromLocation:(CLLocation *)oldLocation{
+    //NSLog(@"纬度: %f",newLocation.coordinate.latitude);
+    //NSLog(@"经度: %f",newLocation.coordinate.longitude);
+    _location = newLocation;
+    //用flag思想判断是否可以去根据定位拿到城市
+    if (firstVisit) {
+        firstVisit = !firstVisit;
+        //根据定位拿到城市
+        [self getRegeoViaCoordinate];
+    }
+}
+-(void)getRegeoViaCoordinate{
+    //duration表示从now开始过三个sec
+    dispatch_time_t duration= dispatch_time(DISPATCH_TIME_NOW, 3 * NSEC_PER_SEC);
+    //用duration这个设置好的策略去做某些事
+    dispatch_after(duration,dispatch_get_main_queue(), ^{
+        //正式做事情
+        CLGeocoder *geo = [CLGeocoder new];
+        //方向地理编码
+        [geo reverseGeocodeLocation:_location completionHandler:^(NSArray<CLPlacemark *> * _Nullable placemarks, NSError * _Nullable error) {
+            if (!error) {
+                CLPlacemark *first = placemarks.firstObject;
+                NSDictionary *locDict = first.addressDictionary;
+                NSLog(@"locDict = %@",locDict);
+                NSString *cityStr = locDict[@"City"];
+                //把city的市子去掉
+                cityStr = [cityStr substringToIndex:(cityStr.length - 1)];
+                [[StorageMgr singletonStorageMgr]removeObjectForKey:@"LocCity"];
+                //将定位到的城市保存进单例化全局变量
+                [[StorageMgr singletonStorageMgr] addKey:@"LocCity" andValue:cityStr];
+                if (![cityStr isEqualToString:_cityBtn.titleLabel.text]) {
+                    //将定位的城市和当前选则的城市不一样的时候去弹窗询问用户是否要切换城市
+                    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示" message:[NSString stringWithFormat:@"当前定位到的城市为%@,请问您是否需要切换" ,cityStr] preferredStyle:UIAlertControllerStyleAlert];
+                    UIAlertAction *yesAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                        //修改城市按钮标题
+                        [_cityBtn setTitle:cityStr forState:UIControlStateNormal];
+                        //修改用户选择的城市记忆体
+                        [Utilities removeUserDefaults:@"UserCity"];
+                        [Utilities setUserDefaults:@"UserCity" content:cityStr];
+                        //重新执行网络请求
+                        //[self network];
+                    }];
+                    UIAlertAction *noAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+                    [alert addAction:yesAction];
+                    [alert addAction:noAction];
+                    [self presentViewController:alert animated:YES completion:nil];
+                }
+                
+            }
+        }];
+        //关掉开关
+        [_locMgr stopUpdatingLocation];
+    });
+}
+
+-(void)checkCityState:(NSNotification *)note{
+    NSString *cityStr = note.object;
+    if (![cityStr isEqualToString:_cityBtn.titleLabel.text]){
+        //修改城市按钮标题
+        [_cityBtn setTitle:cityStr forState:UIControlStateNormal];
+        //修改用户选择的城市记忆体
+        [Utilities removeUserDefaults:@"UserCity"];
+        [Utilities setUserDefaults:@"UserCity" content:cityStr];
+        //重新执行网络请求
+       // [self network];
+    }
+}
+//这个方法处理开始定位
+-(void)locationStart{
+    //判断用户有没有选择过是否使用定位
+    if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusNotDetermined) {
+        //询问用户是否愿意使用定位
+#ifdef __IPHONE_8_0
+        //使用“使用中打开定位”这个策略去运用定位功能
+        [_locMgr requestWhenInUseAuthorization];
+#endif
+    }
+    //打开定位服务的开关（开始定位）
+    [_locMgr startUpdatingLocation];
+}
+
+
 @end

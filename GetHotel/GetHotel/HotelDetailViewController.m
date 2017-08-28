@@ -8,6 +8,7 @@
 
 #import "HotelDetailViewController.h"
 #import "Constants.h"
+
 @interface HotelDetailViewController (){
     NSInteger flag;
 }
@@ -48,10 +49,14 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+//当前页面将要显示的时候，显示导航栏
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:NO animated:animated];
+}
 //设置导航栏样式
 - (void)setNavigationItem{
-    //self.navigationController.navigationBar.backgroundColor = [UIColor whiteColor];
-    [self.navigationController.navigationBar setBarTintColor:HEAD_THEMECOLOR];
+    [self.navigationController.navigationBar setBarTintColor:[UIColor colorWithRed:20/255.0 green:100/255.0 blue:255.0 alpha:1.0]];
     //实例化一个button 类型为UIButtonTypeSystem
     UIButton *leftBtn = [UIButton buttonWithType:UIButtonTypeSystem];
     //设置位置大小
@@ -165,5 +170,9 @@
 }
 
 - (IBAction)BuyAction:(UIButton *)sender forEvent:(UIEvent *)event {
+    
+    [self performSegueWithIdentifier:@"pay" sender:self];
+
 }
 @end
+
