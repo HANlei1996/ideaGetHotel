@@ -13,6 +13,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *passWordTextField;
 @property (weak, nonatomic) IBOutlet UITextField *confirmTextField;
 - (IBAction)signUpAction:(UIButton *)sender forEvent:(UIEvent *)event;
+@property (weak, nonatomic) IBOutlet UIButton *signUpBtn;
 
 @end
 
@@ -21,7 +22,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self naviConfig];
-    [self uiLayout];
+    //[self uiLayout];
     // Do any additional setup after loading the view.
 }
 
@@ -32,7 +33,8 @@
 -(void)naviConfig{
     
     //设置导航条的颜色（风格颜色）
-    [self.navigationController.navigationBar setBarTintColor:[UIColor colorWithRed:20/255.0 green:100/255.0 blue:255.0 alpha:1.0]];
+    //[self.navigationController.navigationBar setBarTintColor:[UIColor colorWithRed:20/255.0 green:100/255.0 blue:255.0 alpha:1.0]];
+    self.navigationController.navigationBar.barTintColor=UIColorFromRGB(20, 100, 255);
     //设置导航条的标题颜色
     self.navigationController.navigationBar.titleTextAttributes=@{NSForegroundColorAttributeName : [UIColor whiteColor] };
     //设置导航条是否隐藏
@@ -52,10 +54,10 @@
 }
 -(void)uiLayout{
     //判断是否存在用户名记忆体
-    if (![[Utilities getUserDefaults:@"Username"] isKindOfClass:[NSNull class]]) {
-        if ([Utilities getUserDefaults:@"Username"] != nil) {
+    if (![[Utilities getUserDefaults:@"tel"] isKindOfClass:[NSNull class]]) {
+        if ([Utilities getUserDefaults:@"tel"] != nil) {
             //将他显示在用户名输入框
-            _userTelTextField.text=[Utilities getUserDefaults:@"Username"];
+            _userTelTextField.text=[Utilities getUserDefaults:@"tel"];
         }
     }
 }
@@ -70,6 +72,7 @@
 */
 
 - (IBAction)signUpAction:(UIButton *)sender forEvent:(UIEvent *)event {
+    [self request];
     if (_userTelTextField.text.length== 0) {
         [Utilities popUpAlertViewWithMsg:@"请输入你的手机号" andTitle:nil onView:self];
         return;
@@ -89,12 +92,58 @@
         return;
     }
     if ([_passWordTextField.text isEqualToString:_confirmTextField.text]) {
-        // [self request];
+        
     }else{
         [Utilities popUpAlertViewWithMsg:@"密码输入不一致，请重新输入" andTitle:@"提示" onView:self];
         // _passWordTextField.text = @"";
         _confirmTextField.text = @"";
     }
+    
+}
+- (void)request{
+    //点击按钮的时候创建一个蒙层，并显示在当前页面
+    UIActivityIndicatorView *avi = [Utilities getCoverOnView:self.view];
+    //参数
+    NSDictionary *para = @{@"tel":_userTelTextField.text,@"pwd":_passWordTextField.text};
+    NSLog(@"参数:%@",para);
+    //网络请求
+    [RequestAPI requestURL:@"/register" withParameters:para andHeader:nil byMethod:kPost andSerializer:kJson success:^(id responseObject) {
+        NSLog(@"responseObject:%@", responseObject);
+        //当网络请求成功时让蒙层消失
+        [avi stopAnimating];
+        
+        if ([responseObject[@"flag"] isEqualToString:@"success"]) {
+            NSDictionary *result = responseObject[@"result"];
+            NSString *token = result[@"token"];
+            NSLog(@"token: %@", token);
+            //把token存入单例化全局变量中
+            [[StorageMgr singletonStorageMgr] removeObjectForKey:@"token"];
+            [[StorageMgr singletonStorageMgr] addKey:@"token" andValue:token];
+            
+            //客户的电话号码是否要加密处理，根据接口返回的hidePhone判断。把hidePhone处理后存入单例化全局变量中，在其他有客户信息显示的页面上判断
+            NSDictionary *agent = result[@"agent"];
+            BOOL showPhone = [agent[@"hidePhone"] boolValue];
+            
+            [[StorageMgr singletonStorageMgr] removeObjectForKey:@"showPhone"];
+            [[StorageMgr singletonStorageMgr] addKey:@"showPhone" andValue:@(showPhone)];
+            
+            //保存用户名
+            [Utilities removeUserDefaults:@"tel"];
+            [Utilities setUserDefaults:@"pwd" content:_userTelTextField.text];
+            
+            _passWordTextField.text = @"";
+            
+            [self performSegueWithIdentifier:@"loginToTask" sender:self];
+        }else{
+            [Utilities popUpAlertViewWithMsg:responseObject[@"message"] andTitle:@"提示" onView:self];
+            
+        }
+        
+    } failure:^(NSInteger statusCode, NSError *error) {
+        [avi stopAnimating];
+        [Utilities popUpAlertViewWithMsg:@"网络错误,请稍等再试" andTitle:@"提示" onView:self];
+        
+    }];
 }
 //键盘收回
 - (void) touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
