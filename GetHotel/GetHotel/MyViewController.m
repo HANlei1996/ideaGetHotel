@@ -28,7 +28,7 @@
     // Do any additional setup after loading the view.
     _myArr = @[@{@"htImage":@"酒店",@"hotelsLabel":@"我的酒店"},@{@"htImage":@"航空",@"hotelsLabel":@"我的航空"},@{@"htImage":@"我的消息",@"hotelsLabel":@"我的消息"},@{@"htImage":@"设置",@"hotelsLabel":@"账户设置"},@{@"htImage":@"使用协议",@"hotelsLabel":@"使用协议"},@{@"htImage":@"联系客服",@"hotelsLabel":@"联系客服"}];
     _myTabelView.tableFooterView = [UIView new];
-
+    [self request];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -136,4 +136,32 @@
 - (IBAction)loginBtn:(UIButton *)sender forEvent:(UIEvent *)event {
     [self performSegueWithIdentifier:@"zhsz" sender:self];
 }
+#pragma mark - request
+//网络请求
+- (void)request{
+    
+    UIActivityIndicatorView *avi = [Utilities getCoverOnView:self.view];
+    
+    //获取token请求接口
+    //NSString *token = [[StorageMgr singletonStorageMgr] objectForKey:@"token"];
+   // NSArray *headers = @[[Utilities makeHeaderForToken:token]];
+    
+    [RequestAPI requestURL:@"/myUsers_edu" withParameters:nil andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
+        [avi stopAnimating];
+        NSLog(@"responseObject: %@", responseObject);
+        if ([responseObject[@"flag"] isEqualToString:@"success"]) {
+            
+        
+        }else{
+           
+        }
+        
+    } failure:^(NSInteger statusCode, NSError *error) {
+        [avi stopAnimating];
+        
+       
+    
+    }];
+}
+
 @end
