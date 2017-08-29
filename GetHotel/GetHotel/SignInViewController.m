@@ -62,7 +62,7 @@
     [self dismissViewControllerAnimated:YES completion:nil];
     //[self.navigationController popViewControllerAnimated:YES];
 }
-<<<<<<< HEAD
+
 -(void)uiLayout{
     //判断是否存在用户名记忆体
     if (![[Utilities getUserDefaults:@"username"] isKindOfClass:[NSNull class]]) {
@@ -72,8 +72,8 @@
         }
     }
 }
-=======
->>>>>>> c18abf3616d5a7f0a6dc2b3e1c9a979a70ce54bb
+
+
 /*
 #pragma mark - Navigation
 
