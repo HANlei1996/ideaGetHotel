@@ -148,7 +148,7 @@
             _passwordnameTextField.text = @"";
             //记忆用户名
             [Utilities setUserDefaults:@"Username" content:_passwordnameTextField.text];
-            [self performSegueWithIdentifier:@"SignNavi" sender:self];
+            //[self performSegueWithIdentifier:@"SignNavi" sender:self];
         }else{
             NSString *errorMsg=[ErrorHandler getProperErrorString:[responseObject[@"result"]integerValue]];
             [Utilities popUpAlertViewWithMsg:errorMsg andTitle:@"提示" onView:self];
