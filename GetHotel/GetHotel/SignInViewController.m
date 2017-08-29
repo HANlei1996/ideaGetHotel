@@ -7,7 +7,7 @@
 //
 
 #import "SignInViewController.h"
-
+#import "UserModel.h"
 @interface SignInViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *usernameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordnameTextField;
@@ -64,10 +64,10 @@
 }
 -(void)uiLayout{
     //判断是否存在用户名记忆体
-    if (![[Utilities getUserDefaults:@"username"] isKindOfClass:[NSNull class]]) {
-        if ([Utilities getUserDefaults:@"username"] != nil) {
+    if (![[Utilities getUserDefaults:@"Username"] isKindOfClass:[NSNull class]]) {
+        if ([Utilities getUserDefaults:@"Username"] != nil) {
             //将他显示在用户名输入框
-            _usernameTextField.text=[Utilities getUserDefaults:@"username"];
+            _usernameTextField.text=[Utilities getUserDefaults:@"Username"];
         }
     }
 }
@@ -98,7 +98,19 @@
 #pragma mark - request
 
 #pragma mark - Btn
-
+//键盘收回
+- (void) touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    //让根视图结束编辑状态达到收起键盘的目的
+    [self.view endEditing:YES];
+    
+}
+//按return收回键盘
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+    if (textField == _usernameTextField || textField == _passwordnameTextField) {
+        [textField resignFirstResponder];
+    }
+    return YES;
+}
 
 - (IBAction)signBtnAction:(UIButton *)sender forEvent:(UIEvent *)event {
     
@@ -133,21 +145,22 @@
     NSDictionary *para = @{@"tel":_usernameTextField.text,@"pwd":_passwordnameTextField.text};
     [RequestAPI requestURL:@"/login" withParameters:para andHeader:nil byMethod:kPost andSerializer:kForm success:^(id responseObject) {
         [_avi stopAnimating];
-        NSLog(@"LOGIN=%@",responseObject);
+        NSLog(@"responseObject:%@",responseObject);
         if([responseObject[@"result"] integerValue]==1){
             NSDictionary *result = responseObject[@"content"];
-            //UserModel *user = [[UserModel alloc]initWithDictionary:result];
-            //将登录获取到用户信息打包存储到单例化全局变量中
-            //[[StorageMgr singletonStorageMgr]addKey:@"UserInfo" andValue:user];
+            UserModel *user = [[UserModel alloc]initWithDictionary:result];
+        //将登录获取到用户信息打包存储到单例化全局变量中
+            [[StorageMgr singletonStorageMgr]addKey:@"UserInfo" andValue:user];
             //单独将用户的ID也存储进单例化全局变量来作为用户是否已经登录的判断依据，同时也方便其他所有页面跟快捷的是用用户ID这个参数
-            //[[StorageMgr singletonStorageMgr]addKey:@"MemberId" andValue:user.MemberId];
+            [[StorageMgr singletonStorageMgr]addKey:@"MemberId" andValue:user.memberId];
             //如果键盘还打开着让它收起
             [self.view endEditing:YES];
             //清空密码输入框的内容
             _passwordnameTextField.text = @"";
             //记忆用户名
-            [Utilities setUserDefaults:@"Username" content:_passwordnameTextField.text];
+            [Utilities setUserDefaults:@"Username" content:_usernameTextField.text];
             //[self performSegueWithIdentifier:@"SignNavi" sender:self];
+            [self dismissViewControllerAnimated:YES completion:nil];
         }else{
             NSString *errorMsg=[ErrorHandler getProperErrorString:[responseObject[@"result"]integerValue]];
             [Utilities popUpAlertViewWithMsg:errorMsg andTitle:@"提示" onView:self];
@@ -159,18 +172,5 @@
         //业务逻辑失败的情况下
         [Utilities popUpAlertViewWithMsg:@"网络错误" andTitle:nil onView:self];
     }];
-}
-//键盘收回
-- (void) touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
-    //让根视图结束编辑状态达到收起键盘的目的
-    [self.view endEditing:YES];
-    
-}
-//按return收回键盘
-- (BOOL)textFieldShouldReturn:(UITextField *)textField{
-    if (textField == _usernameTextField || textField == _passwordnameTextField) {
-        [textField resignFirstResponder];
-    }
-    return YES;
 }
 @end
