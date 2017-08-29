@@ -24,7 +24,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jWx-BJ-ubw">
-                                <rect key="frame" x="104" y="459" width="167" height="40"/>
+                                <rect key="frame" x="104" y="503" width="167" height="40"/>
                                 <color key="backgroundColor" red="0.26588511889999999" green="0.55008321299999996" blue="0.88069083120000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="1OZ-No-XoD"/>
@@ -43,7 +43,7 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nna-Qd-rUI">
-                                <rect key="frame" x="15" y="100" width="345" height="290"/>
+                                <rect key="frame" x="15" y="144" width="345" height="290"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入手机号" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pIk-kg-RyT">
                                         <rect key="frame" x="70" y="115" width="235" height="17"/>
@@ -163,7 +163,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pMN-Eh-dgi">
-                                <rect key="frame" x="15" y="100" width="345" height="290"/>
+                                <rect key="frame" x="15" y="144" width="345" height="290"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入手机号" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VKE-B8-yt5">
                                         <rect key="frame" x="70" y="115" width="235" height="17"/>
@@ -272,7 +272,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bt5-Y4-q4l">
-                                <rect key="frame" x="104" y="459" width="167" height="40"/>
+                                <rect key="frame" x="104" y="503" width="167" height="40"/>
                                 <color key="backgroundColor" red="0.26588511889999999" green="0.55008321299999996" blue="0.88069083120000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="h1M-Vu-2gA"/>
@@ -288,6 +288,7 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="signUpAction:forEvent:" destination="NUX-sB-svC" eventType="touchUpInside" id="27m-gb-VGU"/>
+                                    <segue destination="Sse-4T-fgo" kind="show" identifier="SignUpToSignIn" id="yHk-mA-u2N"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -337,4 +338,7 @@
         <image name="3" width="87" height="78"/>
         <image name="人像" width="166" height="166"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="yHk-mA-u2N"/>
+    </inferredMetricsTieBreakers>
 </document>

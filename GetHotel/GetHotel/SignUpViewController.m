@@ -49,8 +49,8 @@
 }
 //用Model的方式返回上一页
 - (void)backAction {
-    //[self dismissViewControllerAnimated:YES completion:nil];
-    [self.navigationController popViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
+    //[self.navigationController popViewControllerAnimated:YES];
 }
 -(void)uiLayout{
     //判断是否存在用户名记忆体
@@ -121,8 +121,8 @@
         if ([responseObject[@"result"] integerValue] ==1) {
             NSLog(@"responseObject:%@",responseObject);
             [Utilities popUpAlertViewWithMsg:@"恭喜你注册成功" andTitle:nil onView:self];
-            
-            [self dismissViewControllerAnimated:YES completion:nil];
+            [self performSegueWithIdentifier:@"SignUpToSignIn" sender:self];
+            //[self dismissViewControllerAnimated:YES completion:nil];
         } else{
             [_avi stopAnimating];
             NSString *errorMsg = [ErrorHandler getProperErrorString:[responseObject[@"result"]integerValue]];
