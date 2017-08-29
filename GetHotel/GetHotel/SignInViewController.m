@@ -62,7 +62,6 @@
     [self dismissViewControllerAnimated:YES completion:nil];
     //[self.navigationController popViewControllerAnimated:YES];
 }
-
 -(void)uiLayout{
     //判断是否存在用户名记忆体
     if (![[Utilities getUserDefaults:@"username"] isKindOfClass:[NSNull class]]) {
