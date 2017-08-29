@@ -13,7 +13,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *passwordnameTextField;
 - (IBAction)signBtnAction:(UIButton *)sender forEvent:(UIEvent *)event;
 @property (weak, nonatomic) IBOutlet UIButton *signBtn;
-//@property (strong,nonatomic) UIActivityIndicatorView *avi;
+@property (strong,nonatomic) UIActivityIndicatorView *avi;
 @end
 
 @implementation SignInViewController
@@ -21,7 +21,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self naviConfig];
-    [self uiLayout];
+    
     // Do any additional setup after loading the view.
     _signBtn.enabled = NO;
     _signBtn.backgroundColor = UIColorFromRGB(200, 200, 200);
@@ -62,15 +62,18 @@
     [self dismissViewControllerAnimated:YES completion:nil];
     //[self.navigationController popViewControllerAnimated:YES];
 }
+<<<<<<< HEAD
 -(void)uiLayout{
     //判断是否存在用户名记忆体
-    if (![[Utilities getUserDefaults:@"tel"] isKindOfClass:[NSNull class]]) {
-        if ([Utilities getUserDefaults:@"tel"] != nil) {
+    if (![[Utilities getUserDefaults:@"username"] isKindOfClass:[NSNull class]]) {
+        if ([Utilities getUserDefaults:@"username"] != nil) {
             //将他显示在用户名输入框
-            _usernameTextField.text=[Utilities getUserDefaults:@"tel"];
+            _usernameTextField.text=[Utilities getUserDefaults:@"username"];
         }
     }
 }
+=======
+>>>>>>> c18abf3616d5a7f0a6dc2b3e1c9a979a70ce54bb
 /*
 #pragma mark - Navigation
 
@@ -119,54 +122,43 @@
         [Utilities popUpAlertViewWithMsg:@"你输入的密码必须在6~18之间" andTitle:nil onView:self];
         return;
     }
-    //无输入异常的情况，开始正式执行登录接口
-    //[self readyForEncoding];
-     [self request];
+    //UINavigationController *signNavi=[Utilities getStoryboardInstance:
+                                  //    @"Member"byIdentity:@"SignNavi"];
+    //[self presentViewController:signNavi animated:YES completion:nil];    //无输入异常的情况，开始正式执行登录接口
+   
+     [self networkRequest];
 }
 #pragma mark - request
-- (void)request{
-    //点击按钮的时候创建一个蒙层，并显示在当前页面
-    UIActivityIndicatorView *avi = [Utilities getCoverOnView:self.view];
-    //参数
+-(void)networkRequest{
+    _avi = [Utilities getCoverOnView:self.view];
     NSDictionary *para = @{@"tel":_usernameTextField.text,@"pwd":_passwordnameTextField.text};
-    NSLog(@"参数:%@",para);
-    //网络请求
-    [RequestAPI requestURL:@"/login" withParameters:para andHeader:nil byMethod:kPost andSerializer:kJson success:^(id responseObject) {
-        NSLog(@"responseObject:%@", responseObject);
-        //当网络请求成功时让蒙层消失
-        [avi stopAnimating];
-        
-        if ([responseObject[@"flag"] isEqualToString:@"success"]) {
-            NSDictionary *result = responseObject[@"result"];
-            NSString *token = result[@"token"];
-            NSLog(@"token: %@", token);
-            //把token存入单例化全局变量中
-            [[StorageMgr singletonStorageMgr] removeObjectForKey:@"token"];
-            [[StorageMgr singletonStorageMgr] addKey:@"token" andValue:token];
-            
-            //客户的电话号码是否要加密处理，根据接口返回的hidePhone判断。把hidePhone处理后存入单例化全局变量中，在其他有客户信息显示的页面上判断
-            NSDictionary *agent = result[@"agent"];
-            BOOL showPhone = [agent[@"hidePhone"] boolValue];
-            
-            [[StorageMgr singletonStorageMgr] removeObjectForKey:@"showPhone"];
-            [[StorageMgr singletonStorageMgr] addKey:@"showPhone" andValue:@(showPhone)];
-            
-            //保存用户名
-            [Utilities removeUserDefaults:@"tel"];
-            [Utilities setUserDefaults:@"pwd" content:_usernameTextField.text];
-            
+    [RequestAPI requestURL:@"/login" withParameters:para andHeader:nil byMethod:kPost andSerializer:kForm success:^(id responseObject) {
+        [_avi stopAnimating];
+        NSLog(@"LOGIN=%@",responseObject);
+        if([responseObject[@"result"] integerValue]==1){
+            NSDictionary *result = responseObject[@"content"];
+            //UserModel *user = [[UserModel alloc]initWithDictionary:result];
+            //将登录获取到用户信息打包存储到单例化全局变量中
+            //[[StorageMgr singletonStorageMgr]addKey:@"UserInfo" andValue:user];
+            //单独将用户的ID也存储进单例化全局变量来作为用户是否已经登录的判断依据，同时也方便其他所有页面跟快捷的是用用户ID这个参数
+            //[[StorageMgr singletonStorageMgr]addKey:@"MemberId" andValue:user.MemberId];
+            //如果键盘还打开着让它收起
+            [self.view endEditing:YES];
+            //清空密码输入框的内容
             _passwordnameTextField.text = @"";
-            
-            [self performSegueWithIdentifier:@"loginToTask" sender:self];
+            //记忆用户名
+            [Utilities setUserDefaults:@"Username" content:_passwordnameTextField.text];
+            [self performSegueWithIdentifier:@"SignNavi" sender:self];
         }else{
-            [Utilities popUpAlertViewWithMsg:responseObject[@"message"] andTitle:@"提示" onView:self];
-            
+            NSString *errorMsg=[ErrorHandler getProperErrorString:[responseObject[@"result"]integerValue]];
+            [Utilities popUpAlertViewWithMsg:errorMsg andTitle:@"提示" onView:self];
         }
         
-    } failure:^(NSInteger statusCode, NSError *error) {
-        [avi stopAnimating];
-        [Utilities popUpAlertViewWithMsg:@"网络错误,请稍等再试" andTitle:@"提示" onView:self];
         
+    } failure:^(NSInteger statusCode, NSError *error) {
+        [_avi stopAnimating];
+        //业务逻辑失败的情况下
+        [Utilities popUpAlertViewWithMsg:@"网络错误" andTitle:nil onView:self];
     }];
 }
 //键盘收回

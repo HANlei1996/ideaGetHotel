@@ -70,11 +70,11 @@
             </objects>
             <point key="canvasLocation" x="-586" y="-194"/>
         </scene>
-        <!--Item-->
+        <!--酒店-->
         <scene sceneID="OPg-BR-Yb9">
             <objects>
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="kCC-Wj-FME" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="YzP-nI-mq0"/>
+                    <tabBarItem key="tabBarItem" title="酒店" image="酒店" id="YzP-nI-mq0"/>
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="9Pa-pJ-MUo">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
@@ -146,7 +146,7 @@
                                     <constraint firstItem="Yxy-ko-qpv" firstAttribute="top" secondItem="W2U-6S-chl" secondAttribute="top" constant="90" id="uVP-6N-uhP"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="D3R-Ve-FZi">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="D3R-Ve-FZi">
                                 <rect key="frame" x="0.0" y="240" width="375" height="378"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="sectionIndexBackgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
@@ -315,7 +315,7 @@
         <!--我的-->
         <scene sceneID="gAQ-21-mDC">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="94M-fW-1nB" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="MY" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="94M-fW-1nB" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="我的" image="我的" id="aCv-Je-98F"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="y5U-Ad-GCl">
@@ -351,6 +351,9 @@
                                         <state key="normal" title="苏州">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <segue destination="soy-6n-Ozd" kind="presentation" id="d1s-vB-CbC"/>
+                                        </connections>
                                     </button>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="🔍" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PsZ-nj-JYW">
                                         <rect key="frame" x="61" y="75" width="244" height="30"/>
@@ -674,6 +677,7 @@
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="bar" destination="tWB-cT-1Tb" id="hwg-RS-aM7"/>
+                        <outlet property="cityBtn" destination="hfV-vl-e0m" id="iGd-dc-vH1"/>
                         <outlet property="hotelsView" destination="ptO-CT-bUo" id="ne5-4F-qSv"/>
                         <outlet property="image1" destination="c73-fb-KXZ" id="pJW-hm-s9x"/>
                         <outlet property="image2" destination="2eG-o9-xqB" id="2d6-wb-q3f"/>
@@ -698,6 +702,93 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oGU-rS-DsM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1026" y="-832"/>
+        </scene>
+        <!--选择城市-->
+        <scene sceneID="UvD-9F-8UQ">
+            <objects>
+                <tableViewController id="n8z-Mu-rvQ" customClass="CityTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="cwD-iK-VXu">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="XzN-AF-tWC">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="定位" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nYX-qd-8kE">
+                                    <rect key="frame" x="15" y="16" width="31" height="18"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                    <color key="textColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wd7-GI-ZzJ">
+                                    <rect key="frame" x="251" y="10" width="94" height="30"/>
+                                    <state key="normal" title="正在获取中....">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="cityAction:forEvent:" destination="n8z-Mu-rvQ" eventType="touchUpInside" id="wcA-5r-lhW"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstItem="wd7-GI-ZzJ" firstAttribute="centerY" secondItem="XzN-AF-tWC" secondAttribute="centerY" id="86b-CL-bIf"/>
+                                <constraint firstAttribute="trailing" secondItem="wd7-GI-ZzJ" secondAttribute="trailing" constant="30" id="d4x-Dj-ciV"/>
+                                <constraint firstItem="nYX-qd-8kE" firstAttribute="leading" secondItem="XzN-AF-tWC" secondAttribute="leading" constant="15" id="kWf-zk-i8x"/>
+                                <constraint firstItem="nYX-qd-8kE" firstAttribute="centerY" secondItem="XzN-AF-tWC" secondAttribute="centerY" id="ktn-9C-8Ne"/>
+                            </constraints>
+                        </view>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CityCell" textLabel="3hC-Id-AbB" style="IBUITableViewCellStyleDefault" id="tQh-9x-s8k">
+                                <rect key="frame" x="0.0" y="78" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tQh-9x-s8k" id="HxU-xM-eZu">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3hC-Id-AbB">
+                                            <rect key="frame" x="15" y="0.0" width="345" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="n8z-Mu-rvQ" id="nXW-mv-JTt"/>
+                            <outlet property="delegate" destination="n8z-Mu-rvQ" id="Ddg-yp-9OK"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="选择城市" id="CDD-F7-yOJ"/>
+                    <connections>
+                        <outlet property="cityBtn" destination="wd7-GI-ZzJ" id="pqO-Wi-gQp"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Sb1-NX-MzW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3309.5999999999999" y="-831.63418290854577"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="VCf-hx-uoM">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="soy-6n-Ozd" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="qvn-PQ-1Qd">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="n8z-Mu-rvQ" kind="relationship" relationship="rootViewController" id="iSd-df-DHH"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7ZX-2T-bIS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2368.8000000000002" y="-832.53373313343332"/>
         </scene>
     </scenes>
     <resources>
