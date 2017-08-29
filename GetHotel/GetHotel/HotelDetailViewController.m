@@ -92,10 +92,10 @@
 //设置导航栏样式
 -(void)networkRequest{
     UIActivityIndicatorView *aiv=[Utilities getCoverOnView:self.view];
-    NSMutableDictionary *parameters=[NSMutableDictionary new];
+    NSDictionary *para = @{@"id":@1};
     
-    [RequestAPI requestURL:@"/findHotelById" withParameters:parameters andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
-        
+    [RequestAPI requestURL:@"/findHotelById" withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
+        NSLog(@"responseObject:%@",responseObject);
         [aiv stopAnimating];
         if([responseObject[@"resultFlag"]integerValue] == 8001){
             
