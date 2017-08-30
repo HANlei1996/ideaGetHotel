@@ -10,7 +10,7 @@
 
 @interface UserModel : NSObject
 @property(strong,nonatomic) NSString *memberId;//用户ID
-@property(strong,nonatomic) NSString *phone;//手机号
+/@property(strong,nonatomic) NSString *phone;//手机号
 @property(strong,nonatomic) NSString *nickname;//名称
 @property(strong,nonatomic) NSString *age;//年龄
 @property(strong,nonatomic) NSString *dob;//出身日期
@@ -18,7 +18,7 @@
 @property(strong,nonatomic) NSString *gender;//性别
 @property(strong,nonatomic) NSString *credit;//积分
 @property(strong,nonatomic) NSString *avatarUrl;//头像
-//@property(strong,nonatomic) NSString *tokenKey;//
+@property(strong,nonatomic) NSString *token;//
 
 -(id)initWithDictionary:(NSDictionary *)dict;
 @end

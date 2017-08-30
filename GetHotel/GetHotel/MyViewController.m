@@ -8,6 +8,7 @@
 
 #import "MyViewController.h"
 #import "MyTableViewCell.h"
+#import "MyModel.h"
 @interface MyViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UIImageView *touxiangImage;
@@ -43,7 +44,12 @@
         //已登录
         _loginLabel.hidden=YES;
         _nameLable.hidden=NO;
+        _touxiangImage.image=[UIImage imageNamed:@"小葵"];
+        MyModel *my=[[StorageMgr singletonStorageMgr]objectForKey:@"UserInfo"];
+       // [_headImageView sd_setImageWithURL:[NSURL URLWithString:user.headImg]placeholderImage:[UIImage imageNamed:@"用户"]];
+       _nameLable.text=my.name;
         
+
     }else{
         //未登录
         _loginLabel.hidden=NO;
@@ -145,8 +151,8 @@
     //获取token请求接口
     //NSString *token = [[StorageMgr singletonStorageMgr] objectForKey:@"token"];
    // NSArray *headers = @[[Utilities makeHeaderForToken:token]];
-    
-    [RequestAPI requestURL:@"/myUsers_edu" withParameters:nil andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
+    NSDictionary *para = @{@"openid":@2};
+    [RequestAPI requestURL:@"/myUsers_edu" withParameters:para andHeader:nil byMethod:kPost andSerializer:kForm success:^(id responseObject) {
         [avi stopAnimating];
         NSLog(@"responseObject: %@", responseObject);
         if ([responseObject[@"flag"] isEqualToString:@"success"]) {
