@@ -8,6 +8,7 @@
 
 #import "HotelDetailViewController.h"
 #import "Constants.h"
+#import "HotelDetail.h"
 
 @interface HotelDetailViewController (){
     NSInteger flag;
@@ -32,8 +33,7 @@
 @property (weak, nonatomic) IBOutlet UIToolbar *TooBar;
 - (IBAction)cancelAction:(UIBarButtonItem *)sender;
 - (IBAction)confirmAction:(UIBarButtonItem *)sender;
-
-
+@property (strong,nonatomic)UIActivityIndicatorView *avi;
 
 @end
 
@@ -43,6 +43,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self setNavigationItem];
+    [self networkRequest];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -91,21 +92,26 @@
 }
 //设置导航栏样式
 -(void)networkRequest{
-    UIActivityIndicatorView *aiv=[Utilities getCoverOnView:self.view];
+    _avi=[Utilities getCoverOnView:self.view];
+    
     NSDictionary *para = @{@"id":@1};
     
     [RequestAPI requestURL:@"/findHotelById" withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
         NSLog(@"responseObject:%@",responseObject);
-        [aiv stopAnimating];
-        if([responseObject[@"resultFlag"]integerValue] == 8001){
-            
-        }else{
+        [_avi stopAnimating];
+        if([responseObject[@"resultFlag"]integerValue] == 1){
+            NSDictionary *content = responseObject[@"content"];
+            HotelDetail *detailModel = [[HotelDetail alloc]initWithDetailDictionary:content];
+            _HotelLabel.text = detailModel.hotel_name;
+            _hotelPriceLabel.text = [NSString stringWithFormat:@"¥%@",detailModel.price];
+            _AddressLabel.text = detailModel.hotel_address;
+                   }else{
             NSString *errorMsg=[ErrorHandler getProperErrorString:[responseObject[@"resultFlag"]integerValue]];
             [Utilities popUpAlertViewWithMsg:errorMsg andTitle:nil onView:self];
             
         }
     } failure:^(NSInteger statusCode, NSError *error) {
-        [aiv stopAnimating];
+        [_avi stopAnimating];
         //业务逻辑失败的情况下
         [Utilities popUpAlertViewWithMsg:@"请保持网络连接畅通" andTitle:nil onView:self];
     }];
