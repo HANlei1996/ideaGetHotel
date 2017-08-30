@@ -49,15 +49,15 @@
 }
 //用Model的方式返回上一页
 - (void)backAction {
-    //[self dismissViewControllerAnimated:YES completion:nil];
-    [self.navigationController popViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
+    //[self.navigationController popViewControllerAnimated:YES];
 }
 -(void)uiLayout{
     //判断是否存在用户名记忆体
-    if (![[Utilities getUserDefaults:@"tel"] isKindOfClass:[NSNull class]]) {
-        if ([Utilities getUserDefaults:@"tel"] != nil) {
+    if (![[Utilities getUserDefaults:@"Username"] isKindOfClass:[NSNull class]]) {
+        if ([Utilities getUserDefaults:@"Username"] != nil) {
             //将他显示在用户名输入框
-            _userTelTextField.text=[Utilities getUserDefaults:@"tel"];
+            _userTelTextField.text=[Utilities getUserDefaults:@"Username"];
         }
     }
 }
@@ -70,7 +70,18 @@
     // Pass the selected object to the new view controller.
 }
 */
-
+//键盘收回
+- (void) touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    //让根视图结束编辑状态达到收起键盘的目的
+    [self.view endEditing:YES];
+}
+//按return收回键盘
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+    if (textField == _userTelTextField || textField == _passWordTextField || textField == _confirmTextField ) {
+        [textField resignFirstResponder];
+    }
+    return YES;
+}
 - (IBAction)signUpAction:(UIButton *)sender forEvent:(UIEvent *)event {
     
     if (_userTelTextField.text.length== 0) {
@@ -111,9 +122,10 @@
             NSLog(@"responseObject:%@",responseObject);
             [Utilities popUpAlertViewWithMsg:@"恭喜你注册成功" andTitle:nil onView:self];
             [self performSegueWithIdentifier:@"SignUpToSignIn" sender:self];
+            //[self dismissViewControllerAnimated:YES completion:nil];
         } else{
             [_avi stopAnimating];
-            NSString *errorMsg = [ErrorHandler getProperErrorString:[responseObject [@"result"]integerValue]];
+            NSString *errorMsg = [ErrorHandler getProperErrorString:[responseObject[@"result"]integerValue]];
             [Utilities popUpAlertViewWithMsg:errorMsg andTitle:@"提示" onView:self];
         }
         
@@ -123,16 +135,5 @@
         [Utilities popUpAlertViewWithMsg:@"网络错误" andTitle:nil onView:self];
     }];
     
-}//键盘收回
-- (void) touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
-    //让根视图结束编辑状态达到收起键盘的目的
-    [self.view endEditing:YES];
-}
-//按return收回键盘
-- (BOOL)textFieldShouldReturn:(UITextField *)textField{
-    if (textField == _userTelTextField || textField == _passWordTextField || textField == _confirmTextField ) {
-        [textField resignFirstResponder];
-    }
-    return YES;
 }
 @end

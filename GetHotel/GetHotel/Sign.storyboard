@@ -288,7 +288,7 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="signUpAction:forEvent:" destination="NUX-sB-svC" eventType="touchUpInside" id="27m-gb-VGU"/>
-                                    <segue destination="Sse-4T-fgo" kind="show" identifier="SignUpToSignIn" id="Kh5-kf-Cxc"/>
+                                    <segue destination="Sse-4T-fgo" kind="show" identifier="SignUpToSignIn" id="yHk-mA-u2N"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -339,6 +339,6 @@
         <image name="人像" width="166" height="166"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Kh5-kf-Cxc"/>
+        <segue reference="yHk-mA-u2N"/>
     </inferredMetricsTieBreakers>
 </document>
