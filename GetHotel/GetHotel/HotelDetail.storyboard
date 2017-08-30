@@ -26,7 +26,7 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nGK-KD-H2q">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="界面" translatesAutoresizingMaskIntoConstraints="NO" id="ZKZ-XJ-N5u">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="酒店 1 " translatesAutoresizingMaskIntoConstraints="NO" id="ZKZ-XJ-N5u">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="150"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="ZKZ-XJ-N5u" secondAttribute="height" multiplier="5:2" id="5tP-PR-J9B"/>
@@ -597,7 +597,6 @@
         <!--Navigation Controller-->
         <scene sceneID="aAy-aN-pmi">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="eLb-yt-zwt" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController storyboardIdentifier="Detail" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="emH-QJ-6YR" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="TAT-Dc-kew">
@@ -609,6 +608,7 @@
                         <segue destination="3OZ-vW-qXb" kind="relationship" relationship="rootViewController" id="pxx-MN-OKd"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eLb-yt-zwt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-28" y="126.38680659670166"/>
         </scene>
@@ -617,6 +617,6 @@
         <image name="hotel" width="22" height="22"/>
         <image name="hotels" width="82" height="61"/>
         <image name="map" width="17" height="21"/>
-        <image name="界面" width="180" height="214"/>
+        <image name="酒店 1 " width="1049" height="724"/>
     </resources>
 </document>
