@@ -10,7 +10,7 @@
 
 @interface UserModel : NSObject
 @property(strong,nonatomic) NSString *memberId;//用户ID
-/@property(strong,nonatomic) NSString *phone;//手机号
+@property(strong,nonatomic) NSString *phone;//手机号
 @property(strong,nonatomic) NSString *nickname;//名称
 @property(strong,nonatomic) NSString *age;//年龄
 @property(strong,nonatomic) NSString *dob;//出身日期
