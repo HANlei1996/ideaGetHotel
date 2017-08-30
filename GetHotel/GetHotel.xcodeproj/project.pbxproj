@@ -7,7 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		798CFBB21F4FB55100F63873 /* MyHotelTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 798CFBB11F4FB55100F63873 /* MyHotelTableViewCell.m */; };
+		79EBF93F1F56C4240046AB39 /* AcquireTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 79EBF93A1F56C4240046AB39 /* AcquireTableViewCell.m */; };
+		79EBF9401F56C4240046AB39 /* FollowTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 79EBF93C1F56C4240046AB39 /* FollowTableViewCell.m */; };
+		79EBF9411F56C4240046AB39 /* NotAcquireTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 79EBF93E1F56C4240046AB39 /* NotAcquireTableViewCell.m */; };
+		79EBF9451F56C4E50046AB39 /* MyHodelModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 79EBF9441F56C4E50046AB39 /* MyHodelModel.m */; };
 		7ACA18890D5F927A6D751D41 /* libPods-GetHotel.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C25D48D47A878363B9B3B06F /* libPods-GetHotel.a */; };
 		84130F5A1F4EDFBB00140F50 /* MyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84130F591F4EDFBB00140F50 /* MyTableViewCell.m */; };
 		84130F5E1F4EE45400140F50 /* wdhkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84130F5D1F4EE45400140F50 /* wdhkViewController.m */; };
@@ -77,8 +80,14 @@
 
 /* Begin PBXFileReference section */
 		23E364B5BBD2F6C414010A9B /* Pods-GetHotel.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GetHotel.release.xcconfig"; path = "Pods/Target Support Files/Pods-GetHotel/Pods-GetHotel.release.xcconfig"; sourceTree = "<group>"; };
-		798CFBB01F4FB55100F63873 /* MyHotelTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyHotelTableViewCell.h; sourceTree = "<group>"; };
-		798CFBB11F4FB55100F63873 /* MyHotelTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyHotelTableViewCell.m; sourceTree = "<group>"; };
+		79EBF9391F56C4240046AB39 /* AcquireTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AcquireTableViewCell.h; sourceTree = "<group>"; };
+		79EBF93A1F56C4240046AB39 /* AcquireTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AcquireTableViewCell.m; sourceTree = "<group>"; };
+		79EBF93B1F56C4240046AB39 /* FollowTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FollowTableViewCell.h; sourceTree = "<group>"; };
+		79EBF93C1F56C4240046AB39 /* FollowTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FollowTableViewCell.m; sourceTree = "<group>"; };
+		79EBF93D1F56C4240046AB39 /* NotAcquireTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotAcquireTableViewCell.h; sourceTree = "<group>"; };
+		79EBF93E1F56C4240046AB39 /* NotAcquireTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotAcquireTableViewCell.m; sourceTree = "<group>"; };
+		79EBF9431F56C4E50046AB39 /* MyHodelModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyHodelModel.h; sourceTree = "<group>"; };
+		79EBF9441F56C4E50046AB39 /* MyHodelModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyHodelModel.m; sourceTree = "<group>"; };
 		84130F581F4EDFBB00140F50 /* MyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTableViewCell.h; sourceTree = "<group>"; };
 		84130F591F4EDFBB00140F50 /* MyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTableViewCell.m; sourceTree = "<group>"; };
 		84130F5C1F4EE45400140F50 /* wdhkViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wdhkViewController.h; sourceTree = "<group>"; };
@@ -208,6 +217,15 @@
 				23E364B5BBD2F6C414010A9B /* Pods-GetHotel.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		79EBF9421F56C4BE0046AB39 /* MyHotelModel */ = {
+			isa = PBXGroup;
+			children = (
+				79EBF9431F56C4E50046AB39 /* MyHodelModel.h */,
+				79EBF9441F56C4E50046AB39 /* MyHodelModel.m */,
+			);
+			name = MyHotelModel;
 			sourceTree = "<group>";
 		};
 		84130F5B1F4EE0CE00140F50 /* My */ = {
@@ -400,6 +418,7 @@
 		8488E29E1F4ED744003D8DD5 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				79EBF9421F56C4BE0046AB39 /* MyHotelModel */,
 				84A0C0E01F55737F00C16CBC /* UserModel.h */,
 				84A0C0E11F55737F00C16CBC /* UserModel.m */,
 				84B95E241F50305300AF5D98 /* HotelDetail */,
@@ -450,8 +469,12 @@
 			children = (
 				8488E2B61F4EDB85003D8DD5 /* MyHotelViewController.h */,
 				8488E2B71F4EDB85003D8DD5 /* MyHotelViewController.m */,
-				798CFBB01F4FB55100F63873 /* MyHotelTableViewCell.h */,
-				798CFBB11F4FB55100F63873 /* MyHotelTableViewCell.m */,
+				79EBF9391F56C4240046AB39 /* AcquireTableViewCell.h */,
+				79EBF93A1F56C4240046AB39 /* AcquireTableViewCell.m */,
+				79EBF93B1F56C4240046AB39 /* FollowTableViewCell.h */,
+				79EBF93C1F56C4240046AB39 /* FollowTableViewCell.m */,
+				79EBF93D1F56C4240046AB39 /* NotAcquireTableViewCell.h */,
+				79EBF93E1F56C4240046AB39 /* NotAcquireTableViewCell.m */,
 			);
 			name = MyHotel;
 			sourceTree = "<group>";
@@ -671,6 +694,7 @@
 				8488E28D1F4ED4B9003D8DD5 /* NSDateFormatter+Category.m in Sources */,
 				8488E20F1F4ED3E2003D8DD5 /* ViewController.m in Sources */,
 				8488E28E1F4ED4B9003D8DD5 /* NSString+Crypt.m in Sources */,
+				79EBF9411F56C4240046AB39 /* NotAcquireTableViewCell.m in Sources */,
 				8488E28B1F4ED4B9003D8DD5 /* NSData+Base64.m in Sources */,
 				84130F611F4EE46100140F50 /* wdxxViewController.m in Sources */,
 				8488E2151F4ED3E2003D8DD5 /* GetHotel.xcdatamodeld in Sources */,
@@ -678,15 +702,17 @@
 				8488E20C1F4ED3E2003D8DD5 /* AppDelegate.m in Sources */,
 				8488E28A1F4ED4B9003D8DD5 /* JSONS.m in Sources */,
 				84E2024F1F53B9F30035C073 /* PayTableViewController.m in Sources */,
+				79EBF9401F56C4240046AB39 /* FollowTableViewCell.m in Sources */,
 				8488E2891F4ED4B9003D8DD5 /* ErrorHandler.m in Sources */,
 				8488E28F1F4ED4B9003D8DD5 /* RequestAPI.m in Sources */,
 				8488E2BB1F4EDBD0003D8DD5 /* SignInViewController.m in Sources */,
+				79EBF93F1F56C4240046AB39 /* AcquireTableViewCell.m in Sources */,
 				84130F5E1F4EE45400140F50 /* wdhkViewController.m in Sources */,
+				79EBF9451F56C4E50046AB39 /* MyHodelModel.m in Sources */,
 				8488E24C1F4ED4A4003D8DD5 /* BasicEncodingRules.m in Sources */,
 				8488E2091F4ED3E2003D8DD5 /* main.m in Sources */,
 				8488E2AC1F4EDAC1003D8DD5 /* MyViewController.m in Sources */,
 				8434B0921F5164FD007086D1 /* HotelsViewTableCellTableViewCell.m in Sources */,
-				798CFBB21F4FB55100F63873 /* MyHotelTableViewCell.m in Sources */,
 				8488E28C1F4ED4B9003D8DD5 /* NSDate+Utility.m in Sources */,
 				8488E2B81F4EDB85003D8DD5 /* MyHotelViewController.m in Sources */,
 				84A0C0E21F55737F00C16CBC /* UserModel.m in Sources */,
