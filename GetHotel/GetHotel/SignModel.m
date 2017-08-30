@@ -1,14 +1,14 @@
 //
-//  UserModel.m
+//  SignModel.m
 //  GetHotel
 //
-//  Created by admin on 2017/8/29.
+//  Created by admin on 2017/8/30.
 //  Copyright © 2017年 com. All rights reserved.
 //
 
-#import "UserModel.h"
+#import "SignModel.h"
 
-@implementation UserModel
+@implementation SignModel
 -(id)initWithDictionary:(NSDictionary *)dict{
     self=[super init];
     if(self){
@@ -21,7 +21,7 @@
         _idCardNo=[Utilities nullAndNilCheck:dict[@"identificationcard"] replaceBy:@"未设置"];
         _credit=[Utilities nullAndNilCheck:dict[@"memberPoint"] replaceBy:@"0"];
         _avatarUrl=[Utilities nullAndNilCheck:dict[@"memberUrl"] replaceBy:@""];
-   //     _tokenKey=[Utilities nullAndNilCheck:dict[@"key"] replaceBy:@""];
+        _tokenKey=[Utilities nullAndNilCheck:dict[@"key"] replaceBy:@""];
         if ([dict[@"memberSex"] isKindOfClass:[NSNull class]]) {
             _gender=@"";
             
