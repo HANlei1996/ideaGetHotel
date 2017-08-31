@@ -104,11 +104,16 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W2U-6S-chl">
                                 <rect key="frame" x="0.0" y="20" width="375" height="220"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="头像" translatesAutoresizingMaskIntoConstraints="NO" id="Yxy-ko-qpv">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="头像" translatesAutoresizingMaskIntoConstraints="NO" id="Yxy-ko-qpv">
                                         <rect key="frame" x="15" y="90" width="100" height="100"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="Yxy-ko-qpv" secondAttribute="height" multiplier="1:1" id="PzR-cj-EV7"/>
                                         </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="50"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                     </imageView>
                                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="小葵" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X5E-mb-ftQ">
                                         <rect key="frame" x="130" y="120" width="35" height="21"/>
@@ -216,6 +221,7 @@
                         <segue destination="3t6-of-MKI" kind="show" identifier="lxkf" id="jXH-g2-3Yw"/>
                         <segue destination="lO8-eX-iC7" kind="show" identifier="zhsz" id="Vu5-Qd-VdV"/>
                         <segue destination="hIU-DG-93u" kind="show" identifier="wdjd" id="OB3-yS-WQu"/>
+                        <segue destination="cMo-Pm-ada" kind="show" identifier="aaaa" id="XsG-X8-5oz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RAJ-6T-PXJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -292,7 +298,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b8G-9Q-p8w" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="90" y="1318"/>
+            <point key="canvasLocation" x="-98" y="1316"/>
         </scene>
         <!--我的消息-->
         <scene sceneID="N5q-p7-oH5">
@@ -310,7 +316,25 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HBL-gj-fXv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="919" y="1341"/>
+            <point key="canvasLocation" x="494" y="1316"/>
+        </scene>
+        <!--账户设置-->
+        <scene sceneID="gsT-mT-55o">
+            <objects>
+                <viewController title="账户设置" hidesBottomBarWhenPushed="YES" id="cMo-Pm-ada" customClass="zhszViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="p6g-ds-9lD"/>
+                        <viewControllerLayoutGuide type="bottom" id="5SJ-RN-BxD"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Pcs-Fq-n26">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="A8B-59-OHe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1110" y="1316"/>
         </scene>
         <!--我的-->
         <scene sceneID="gAQ-21-mDC">
@@ -633,17 +657,22 @@
                                 </date>
                                 <locale key="locale" localeIdentifier="zh"/>
                             </datePicker>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hol-LJ-OBH">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hol-LJ-OBH">
                                 <rect key="frame" x="0.0" y="120" width="375" height="100"/>
                                 <subviews>
-                                    <pageControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="tpw-94-NdK">
-                                        <rect key="frame" x="328" y="70" width="39" height="37"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    </pageControl>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="酒店信息图片" translatesAutoresizingMaskIntoConstraints="NO" id="vsN-UD-Mc9">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="100"/>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstItem="vsN-UD-Mc9" firstAttribute="centerY" secondItem="hol-LJ-OBH" secondAttribute="centerY" id="2OM-of-nCr"/>
+                                    <constraint firstItem="vsN-UD-Mc9" firstAttribute="leading" secondItem="hol-LJ-OBH" secondAttribute="leading" id="CDK-q1-zcK"/>
+                                    <constraint firstAttribute="trailing" secondItem="vsN-UD-Mc9" secondAttribute="trailing" id="LbX-fo-5qE"/>
                                     <constraint firstAttribute="height" constant="100" id="eGx-Qv-IDM"/>
+                                    <constraint firstItem="vsN-UD-Mc9" firstAttribute="top" secondItem="hol-LJ-OBH" secondAttribute="top" id="h1U-Lu-dwa"/>
+                                    <constraint firstItem="vsN-UD-Mc9" firstAttribute="centerX" secondItem="hol-LJ-OBH" secondAttribute="centerX" id="kJ4-BJ-Bo4"/>
+                                    <constraint firstAttribute="bottom" secondItem="vsN-UD-Mc9" secondAttribute="bottom" id="yON-8h-yDT"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
@@ -799,5 +828,6 @@
         <image name="航空" width="22" height="22"/>
         <image name="酒店" width="22" height="22"/>
         <image name="酒店 1 " width="1049" height="724"/>
+        <image name="酒店信息图片" width="421" height="235"/>
     </resources>
 </document>

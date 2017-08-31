@@ -48,7 +48,7 @@
        // _touxiangImage.image=[UIImage imageNamed:@"小葵"];
          SignModel *user=[[StorageMgr singletonStorageMgr]objectForKey:@"UserInfo"];
         
-        [_touxiangImage sd_setImageWithURL:[NSURL URLWithString:user.avatarUrl] placeholderImage:[UIImage imageNamed:@"小葵"]];
+        [_touxiangImage sd_setImageWithURL:[NSURL URLWithString:user.avatarUrl] placeholderImage:[UIImage imageNamed:@"我的头像"]];
         _nameLable.text=user.nickname;
         /*_grade.hidden=NO;
         UIImage  *stars=[UIImage imageNamed:@"star"];
@@ -124,8 +124,16 @@
     //取消细胞的选中状态
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-
-       // if ([Utilities loginCheck]) {
+    if ([Utilities loginCheck]) {
+        [self performSegueWithIdentifier:@"wdjd" sender:self];
+    
+    }else{
+        UINavigationController *signNavi=[Utilities getStoryboardInstance:
+                                          @"Sign"byIdentity:@"SignNavi"];
+        [self presentViewController:signNavi animated:YES completion:nil];
+        
+    }
+        if ([Utilities loginCheck]) {
             switch (indexPath.section) {
                 case 0:
                     [self performSegueWithIdentifier:@"wdjd" sender:self];
@@ -137,24 +145,24 @@
                     [self performSegueWithIdentifier:@"wdxx" sender:self];
                     break;
                 case 3:
-                    [self performSegueWithIdentifier:@"zhsz" sender:self];
+                    [self performSegueWithIdentifier:@"aaaa" sender:self];
                     break;
                 case 4:
                    [self performSegueWithIdentifier:@"syxy" sender:self];
                     break;
-                    
+                
                 default:
                    [self performSegueWithIdentifier:@"lxkf" sender:self];
                     break;
             }
-      // }else{
+      }else{
             //[self performSegueWithIdentifier:@"syxy" sender:self];
            //[self performSegueWithIdentifier:@"lxkf" sender:self];
-            //UINavigationController *signNavi=[Utilities getStoryboardInstance:
-           //                                   @"Sign"byIdentity:@"SignNavi"];
-//[self presentViewController:signNavi animated:YES completion:nil];
+        UINavigationController *signNavi=[Utilities getStoryboardInstance:
+                                             @"Sign"byIdentity:@"SignNavi"];
+         [self presentViewController:signNavi animated:YES completion:nil];
     
-      //  }
+       }
         }
 
 
