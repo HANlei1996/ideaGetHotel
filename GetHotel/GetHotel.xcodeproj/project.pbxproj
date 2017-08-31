@@ -56,14 +56,6 @@
 		8488E2B81F4EDB85003D8DD5 /* MyHotelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8488E2B71F4EDB85003D8DD5 /* MyHotelViewController.m */; };
 		8488E2BB1F4EDBD0003D8DD5 /* SignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8488E2BA1F4EDBD0003D8DD5 /* SignInViewController.m */; };
 		8488E2BE1F4EDBDF003D8DD5 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8488E2BD1F4EDBDF003D8DD5 /* SignUpViewController.m */; };
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-		84A0C0E21F55737F00C16CBC /* UserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A0C0E11F55737F00C16CBC /* UserModel.m */; };
-=======
-		84B7B1231F56A69D00307369 /* MyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B7B1221F56A69D00307369 /* MyModel.m */; };
->>>>>>> 1f6a3021ba6837e54cf4f038e822919cdee78295
->>>>>>> c0ca0564c1a829933ffee8a3474ab62b0b5c80b8
 		84B95E271F5030CC00AF5D98 /* HotelDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B95E261F5030CC00AF5D98 /* HotelDetail.m */; };
 		84E2024F1F53B9F30035C073 /* PayTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E2024E1F53B9F30035C073 /* PayTableViewController.m */; };
 		84E202551F53E1630035C073 /* PayTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E202541F53E1630035C073 /* PayTableViewCell.m */; };
@@ -178,16 +170,6 @@
 		8488E2BA1F4EDBD0003D8DD5 /* SignInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignInViewController.m; sourceTree = "<group>"; };
 		8488E2BC1F4EDBDF003D8DD5 /* SignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
 		8488E2BD1F4EDBDF003D8DD5 /* SignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-		84A0C0E01F55737F00C16CBC /* UserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserModel.h; sourceTree = "<group>"; };
-		84A0C0E11F55737F00C16CBC /* UserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserModel.m; sourceTree = "<group>"; };
-=======
-		84B7B1211F56A69D00307369 /* MyModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyModel.h; sourceTree = "<group>"; };
-		84B7B1221F56A69D00307369 /* MyModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyModel.m; sourceTree = "<group>"; };
->>>>>>> 1f6a3021ba6837e54cf4f038e822919cdee78295
->>>>>>> c0ca0564c1a829933ffee8a3474ab62b0b5c80b8
 		84B95E251F5030CC00AF5D98 /* HotelDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotelDetail.h; sourceTree = "<group>"; };
 		84B95E261F5030CC00AF5D98 /* HotelDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotelDetail.m; sourceTree = "<group>"; };
 		84E2024D1F53B9F30035C073 /* PayTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayTableViewController.h; sourceTree = "<group>"; };
@@ -715,15 +697,8 @@
 				8488E28B1F4ED4B9003D8DD5 /* NSData+Base64.m in Sources */,
 				84130F611F4EE46100140F50 /* wdxxViewController.m in Sources */,
 				8488E2151F4ED3E2003D8DD5 /* GetHotel.xcdatamodeld in Sources */,
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-				84B7B1231F56A69D00307369 /* MyModel.m in Sources */,
->>>>>>> c0ca0564c1a829933ffee8a3474ab62b0b5c80b8
 				846C1C6F1F56B4A9006C4226 /* SignModel.m in Sources */,
 				79EBF9491F56CC610046AB39 /* MyHodelModel.m in Sources */,
->>>>>>> 1f6a3021ba6837e54cf4f038e822919cdee78295
 				8488E24D1F4ED4A4003D8DD5 /* SKTag.m in Sources */,
 				8488E20C1F4ED3E2003D8DD5 /* AppDelegate.m in Sources */,
 				8488E28A1F4ED4B9003D8DD5 /* JSONS.m in Sources */,
