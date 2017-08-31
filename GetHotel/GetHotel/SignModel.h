@@ -18,7 +18,7 @@
 @property(strong,nonatomic) NSString *gender;//性别
 @property(strong,nonatomic) NSString *credit;//积分
 @property(strong,nonatomic) NSString *avatarUrl;//头像
-@property(strong,nonatomic) NSString *tokenKey;//
+@property(strong,nonatomic) NSString *grade ;//
 
 -(id)initWithDictionary:(NSDictionary *)dict;
 @end
