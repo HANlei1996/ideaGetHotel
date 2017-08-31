@@ -68,7 +68,7 @@
     _AcquireTableView.tableFooterView = [UIView new];
     _NotAcquireTableView.tableFooterView = [UIView new];
     _FollowTableView.tableFooterView = [UIView new];
-    
+    [self naviConfig];
     //菜单栏
     [self setSegment];
     //刷新指示器
@@ -125,6 +125,32 @@
     [_MyHotelScrollView addSubview:_acquireNothingImg];
     [_MyHotelScrollView addSubview:_notAcquireNothingImg];
     [_MyHotelScrollView addSubview:_followNothingImg];
+}
+// 这个方法专门做导航条的控制
+-(void)naviConfig{
+    //设置导航条标题文字
+    //self.navigationItem.title=@"活动列表";
+    //设置导航条的颜色（风格颜色）
+    [self.navigationController.navigationBar setBarTintColor:[UIColor colorWithRed:20/255.0 green:100/255.0 blue:255.0 alpha:1.0]];
+    //设置导航条的标题颜色
+    self.navigationController.navigationBar.titleTextAttributes=@{NSForegroundColorAttributeName : [UIColor whiteColor] };
+    //设置导航条是否隐藏
+    self.navigationController.navigationBar.hidden=NO;
+    
+    //设置导航条上按钮的风格颜色
+    self.navigationController.navigationBar.tintColor=[UIColor whiteColor];
+    //设置是否需要毛玻璃效果
+    self.navigationController.navigationBar.translucent=YES;
+    //实例化一个button 类型为UIButtonTypeSystem
+    UIButton *leftBtn = [UIButton buttonWithType:UIButtonTypeSystem];
+    //设置位置大小
+    leftBtn.frame = CGRectMake(0, 0, 20, 20);
+    //设置其背景图片为返回图片
+    [leftBtn setBackgroundImage:[UIImage imageNamed:@"返回"] forState:UIControlStateNormal];
+    //给按钮添加事件
+    [leftBtn addTarget:self action:@selector(backAction) forControlEvents:UIControlEventTouchUpInside];
+    
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:leftBtn];
 }
 
 //用Model的方式返回上一页
@@ -214,10 +240,9 @@
         [ref endRefreshing];
         
         NSLog(@"acquire: %@", responseObject);
-        if ([responseObject[@"flag"] isEqualToString:@"success"]) {
-            //将数据中的result拿出来放到字典中
-            NSDictionary *result = responseObject[@"result"];
-            //将上一步拿到的字典中的list数组提取出来
+        if([responseObject[@"result"] integerValue]==1){
+            NSDictionary *result = responseObject[@"content"];
+           //将上一步拿到的字典中的list数组提取出来
             NSArray *list = result[@"list"];
             acquireLast = [result[@"isLastPage"] boolValue];
             
@@ -241,15 +266,15 @@
             //让_acquireTableView重载数据
             [_AcquireTableView reloadData];
         }else{
-            [Utilities popUpAlertViewWithMsg:@"请求发生了错误，请稍后再试" andTitle:@"提示" onView:self];{
-            }           }
+            NSString *errorMsg=[ErrorHandler getProperErrorString:[responseObject[@"result"]integerValue]];
+            [Utilities popUpAlertViewWithMsg:errorMsg andTitle:@"提示" onView:self];
+        }
+        
+        
     } failure:^(NSInteger statusCode, NSError *error) {
         [_avi stopAnimating];
-        UIRefreshControl *ref = (UIRefreshControl *)[_AcquireTableView viewWithTag:10001];
-        [ref endRefreshing];
-        
-//        [Utilities forceLogoutCheck:statusCode fromViewController:self];
-        
+        //业务逻辑失败的情况下
+        [Utilities popUpAlertViewWithMsg:@"网络错误" andTitle:nil onView:self];
     }];
 }
 -(void)notAcquireRequest{
@@ -262,7 +287,7 @@
         [ref endRefreshing];
         
         NSLog(@"notAcquire: %@", responseObject);
-        if ([responseObject[@"flag"] isEqualToString:@"success"]) {
+        if ([responseObject[@"result"] integerValue]==1) {
             //将数据中的result拿出来放到字典中
             NSDictionary *result = responseObject[@"result"];
             //将上一步拿到的字典中的list数组提取出来
@@ -289,17 +314,16 @@
             //让_acquireTableView重载数据
             [_NotAcquireTableView reloadData];
         }else{
-            [Utilities popUpAlertViewWithMsg:@"请求发生了错误，请稍后再试" andTitle:@"提示" onView:self];{
-            }            }
+            NSString *errorMsg=[ErrorHandler getProperErrorString:[responseObject[@"result"]integerValue]];
+            [Utilities popUpAlertViewWithMsg:errorMsg andTitle:@"提示" onView:self];
+        }
+        
+        
     } failure:^(NSInteger statusCode, NSError *error) {
         [_avi stopAnimating];
-        UIRefreshControl *ref = (UIRefreshControl *)[_NotAcquireTableView viewWithTag:10001];
-        [ref endRefreshing];
-        
-//        [Utilities forceLogoutCheck:statusCode fromViewController:self];
-        
+        //业务逻辑失败的情况下
+        [Utilities popUpAlertViewWithMsg:@"网络错误" andTitle:nil onView:self];
     }];
-    
 }
 -(void)followRequest{
     NSDictionary *para = @{@"openid": @1,@"id": @3};
@@ -311,7 +335,7 @@
         [ref endRefreshing];
         
         NSLog(@"follow: %@", responseObject);
-        if ([responseObject[@"flag"] isEqualToString:@"success"]) {
+        if ([responseObject[@"result"] integerValue]==1) {
             //将数据中的result拿出来放到字典中
             NSDictionary *result = responseObject[@"result"];
             //将上一步拿到的字典中的list数组提取出来
@@ -338,18 +362,16 @@
             //让_acquireTableView重载数据
             [_FollowTableView reloadData];
         }else{
-            [Utilities popUpAlertViewWithMsg:@"请求发生了错误，请稍后再试" andTitle:@"提示" onView:self];{
-            }            }
+            NSString *errorMsg=[ErrorHandler getProperErrorString:[responseObject[@"result"]integerValue]];
+            [Utilities popUpAlertViewWithMsg:errorMsg andTitle:@"提示" onView:self];
+        }
+        
+        
     } failure:^(NSInteger statusCode, NSError *error) {
         [_avi stopAnimating];
-        UIRefreshControl *ref = (UIRefreshControl *)[_FollowTableView viewWithTag:10001];
-        [ref endRefreshing];
-        
-        //        [Utilities forceLogoutCheck:statusCode fromViewController:self];
-        
+        //业务逻辑失败的情况下
+        [Utilities popUpAlertViewWithMsg:@"网络错误" andTitle:nil onView:self];
     }];
-    
-
 }
 - (void)setRefreshControl{
     //已获取列表的刷新指示器
