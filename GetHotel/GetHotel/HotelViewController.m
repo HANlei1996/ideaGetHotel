@@ -9,11 +9,14 @@
 #import "HotelViewController.h"
 #import "HotelsViewTableCellTableViewCell.h"
 #import <CoreLocation/CoreLocation.h>
+#import "HotelsModel.h"
 @interface HotelViewController()<UITableViewDataSource,UITableViewDelegate,CLLocationManagerDelegate>{
     BOOL isLoading;
     BOOL firstVisit;
     BOOL flag;
     BOOL time;
+    BOOL pageNum;
+    BOOL pageSize;
 }
 @property (weak, nonatomic) IBOutlet UIButton *kaishi;
 @property (weak, nonatomic) IBOutlet UIButton *likai;
@@ -34,11 +37,13 @@
 @property (weak, nonatomic) IBOutlet UIImageView *image3;
 - (IBAction)Btn4:(id)sender forEvent:(UIEvent *)event;
 @property (weak, nonatomic) IBOutlet UIImageView *image4;
-
 @property (weak, nonatomic) IBOutlet UIImageView *image2;
 @property(strong,nonatomic) NSArray*arr;
 @property (strong,nonatomic) CLLocationManager *locMgr;
 @property (strong,nonatomic) CLLocation *location;
+@property (strong,nonatomic) UIActivityIndicatorView *avi;
+@property(strong,nonatomic) NSMutableArray *arr1;
+
 
 @end
 
@@ -46,8 +51,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    _arr=@[@{@"hotelsName":@"无锡君乐登酒店",@"hotelsAddr":@"无锡",@"hotelsDistance":@"距离我3公里",@"hotelsImage":@"酒店1",@"hotelsmoney":@"¥318"}];
+    [self netRequest];
+    _arr=@[@{@"hotelsName":@"无锡君乐登酒店",@"hotelsAddr":@"无锡",@"hotelsDistance":@"距离我3公里",@"hotelsImage":@"酒店信息图片",@"hotelsmoney":@"¥318"},@{@"hotelsName":@"无锡喜来登酒店",@"hotelsAddr":@"无锡",@"hotelsDistance":@"距离我5公里",@"hotelsImage":@"酒店1",@"hotelsmoney":@"¥235"},@{@"hotelsName":@"无锡齐天登酒店",@"hotelsAddr":@"无锡",@"hotelsDistance":@"距离我2公里",@"hotelsImage":@"酒店信息图片",@"hotelsmoney":@"¥360"}];
+    _arr1 = [NSMutableArray new];
+    UIRefreshControl *ref = [UIRefreshControl new];
+    [ref addTarget:self action:@selector(netRequest) forControlEvents:UIControlEventValueChanged];
+    ref.tag = 10004;
+    [_hotelsView addSubview:ref];
     
     
     _hotelsView.tableFooterView = [UIView new];
@@ -90,7 +100,7 @@
 
 //设置表格视图一共有多少组
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 1;
+    return 2;
 }
 
 
@@ -119,7 +129,7 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     UINavigationController *Navi=[Utilities getStoryboardInstance:
-                                      @"HotelDetail"byIdentity:@"Detail"];
+                                  @"HotelDetail"byIdentity:@"Detail"];
     [self presentViewController:Navi animated:YES completion:nil];
 }
 
@@ -163,6 +173,9 @@
     }
 }
 
+
+
+
 - (IBAction)quxiao:(UIBarButtonItem *)sender {
     _bar.hidden=NO;
     _picker.hidden=NO;
@@ -189,59 +202,49 @@
     _bar.hidden = YES;
     _picker.hidden = YES;
 }
-/*-(void)network{
-    
-    UIActivityIndicatorView *aiv=[Utilities getCoverOnView:self.view];
-    NSString *request=[NSString stringWithFormat:@"/event/%@",_activity.activityId];
-    NSMutableDictionary *parameters=[NSMutableDictionary new];
-    if([Utilities loginCheck]){
-        [parameters setObject:[[StorageMgr singletonStorageMgr] objectForKey:@"MemberId"]forKey:@"memberId"];
+
+
+
+- (void)netRequest{
+    _avi = [Utilities getCoverOnView:self.view];
+    NSDictionary *para =  @{@"city_name":_cityBtn,@"inTime":_kaishi,@"outTime":_likai};
+    [RequestAPI requestURL:@"/findHotelByCity_edu" withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
+        NSLog(@"responseObject:%@", responseObject);
+        [_avi stopAnimating];
         
-    }
-    [RequestAPI requestURL:request withParameters:parameters andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
-        [aiv stopAnimating];
-        if([responseObject[@"resultFlag"]integerValue] == 8001){
-            NSDictionary *result= responseObject[@"result"];
-            _activity= [[ActivityModel alloc]initWithDetailDictionary:result];
-            [self uiLayout];
-        }else{
-            NSString *errorMsg=[ErrorHandler getProperErrorString:[responseObject[@"resultFlag"]integerValue]];
-            [Utilities popUpAlertViewWithMsg:errorMsg andTitle:nil onView:self];
+        if([responseObject[@"result"] integerValue] == 1){
+            NSDictionary *content = responseObject[@"content"];
+            NSArray *result = content[@"hotel"][@"list"];
+            NSArray *Aarr = content[@"advertising"];
+            for (NSDictionary *dict in Aarr) {
+                HotelsModel *model = [[HotelsModel alloc]initWithDict:dict];
+                [_arr1 addObject:model];
+                
+                
+                
+            }
             
+            
+            for (NSDictionary *dict in result) {
+                HotelsModel *Model = [[HotelsModel alloc] initWithDict:dict];
+                
+                [_arr1 addObject:Model];
+            }
+            
+            [_hotelsView reloadData];
+            
+        }else{
+            
+            NSString *er = [ErrorHandler getProperErrorString:[responseObject[@"result"] integerValue]];
+            [Utilities popUpAlertViewWithMsg:er andTitle:nil onView:self];
         }
+        
     } failure:^(NSInteger statusCode, NSError *error) {
-        [aiv stopAnimating];
-        //业务逻辑失败的情况下
-        [Utilities popUpAlertViewWithMsg:@"请保持网络连接畅通" andTitle:nil onView:self];
+        [_avi stopAnimating];
+        
     }];
     
-    }
-    
-
-
-
-*/
-
-
-/*- (void)setDefaultDateForButton{
- 
- NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
- 
- formatter.dateFormat = @"yyyy-MM-dd";
- 
- NSDate *date = [NSDate date];
- 
- // NSDate *dateTom = [NSDate dateTomorrow];
- 
- 
- 
- NSString *dateStr = [formatter stringFromDate:date];
- NSString *dateTomStr = [formatter stringFromDate:dateStr];
- 
- [_kaishi setTitle:dateStr forState:UIControlStateNormal];
- [_likai setTitle:dateTomStr forState:UIControlStateNormal];
- }
- */
+}
 
 //定位失败时
 - (void)locationManager:(CLLocationManager *)manager
