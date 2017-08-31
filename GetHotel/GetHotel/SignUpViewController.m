@@ -113,7 +113,7 @@
 }
 -(void)networkRequest{
     _avi = [Utilities getCoverOnView:self.view];
-    NSDictionary *para = @{@"tel":_passWordTextField.text,@"pwd":_passWordTextField.text};
+    NSDictionary *para = @{@"tel":_userTelTextField.text,@"pwd":_passWordTextField.text};
     NSLog(@"参数:%@",para);
     [RequestAPI requestURL:@"/register" withParameters:para andHeader:nil byMethod:kPost andSerializer:kForm success:^(id responseObject) {
         [_avi stopAnimating];
@@ -121,7 +121,8 @@
         if ([responseObject[@"result"] integerValue] ==1) {
             NSLog(@"responseObject:%@",responseObject);
             [Utilities popUpAlertViewWithMsg:@"恭喜你注册成功" andTitle:nil onView:self];
-            [self performSegueWithIdentifier:@"SignUpToSignIn" sender:self];
+            
+            //[self performSegueWithIdentifier:@"SignUpToSignIn" sender:self];
             //[self dismissViewControllerAnimated:YES completion:nil];
         } else{
             [_avi stopAnimating];
