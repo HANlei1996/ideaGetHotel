@@ -657,17 +657,22 @@
                                 </date>
                                 <locale key="locale" localeIdentifier="zh"/>
                             </datePicker>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hol-LJ-OBH">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hol-LJ-OBH">
                                 <rect key="frame" x="0.0" y="120" width="375" height="100"/>
                                 <subviews>
-                                    <pageControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="tpw-94-NdK">
-                                        <rect key="frame" x="328" y="70" width="39" height="37"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    </pageControl>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="酒店信息图片" translatesAutoresizingMaskIntoConstraints="NO" id="vsN-UD-Mc9">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="100"/>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstItem="vsN-UD-Mc9" firstAttribute="centerY" secondItem="hol-LJ-OBH" secondAttribute="centerY" id="2OM-of-nCr"/>
+                                    <constraint firstItem="vsN-UD-Mc9" firstAttribute="leading" secondItem="hol-LJ-OBH" secondAttribute="leading" id="CDK-q1-zcK"/>
+                                    <constraint firstAttribute="trailing" secondItem="vsN-UD-Mc9" secondAttribute="trailing" id="LbX-fo-5qE"/>
                                     <constraint firstAttribute="height" constant="100" id="eGx-Qv-IDM"/>
+                                    <constraint firstItem="vsN-UD-Mc9" firstAttribute="top" secondItem="hol-LJ-OBH" secondAttribute="top" id="h1U-Lu-dwa"/>
+                                    <constraint firstItem="vsN-UD-Mc9" firstAttribute="centerX" secondItem="hol-LJ-OBH" secondAttribute="centerX" id="kJ4-BJ-Bo4"/>
+                                    <constraint firstAttribute="bottom" secondItem="vsN-UD-Mc9" secondAttribute="bottom" id="yON-8h-yDT"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
@@ -823,5 +828,6 @@
         <image name="航空" width="22" height="22"/>
         <image name="酒店" width="22" height="22"/>
         <image name="酒店 1 " width="1049" height="724"/>
+        <image name="酒店信息图片" width="421" height="235"/>
     </resources>
 </document>
