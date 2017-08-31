@@ -221,7 +221,7 @@
                         <segue destination="3t6-of-MKI" kind="show" identifier="lxkf" id="jXH-g2-3Yw"/>
                         <segue destination="lO8-eX-iC7" kind="show" identifier="zhsz" id="Vu5-Qd-VdV"/>
                         <segue destination="hIU-DG-93u" kind="show" identifier="wdjd" id="OB3-yS-WQu"/>
-                        <segue destination="cMo-Pm-ada" kind="show" id="XsG-X8-5oz"/>
+                        <segue destination="cMo-Pm-ada" kind="show" identifier="aaaa" id="XsG-X8-5oz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RAJ-6T-PXJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -321,7 +321,7 @@
         <!--账户设置-->
         <scene sceneID="gsT-mT-55o">
             <objects>
-                <viewController title="账户设置" id="cMo-Pm-ada" customClass="zhszViewController" sceneMemberID="viewController">
+                <viewController title="账户设置" hidesBottomBarWhenPushed="YES" id="cMo-Pm-ada" customClass="zhszViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="p6g-ds-9lD"/>
                         <viewControllerLayoutGuide type="bottom" id="5SJ-RN-BxD"/>
