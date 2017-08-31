@@ -124,15 +124,7 @@
     //取消细胞的选中状态
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    if ([Utilities loginCheck]) {
-        [self performSegueWithIdentifier:@"wdjd" sender:self];
     
-    }else{
-        UINavigationController *signNavi=[Utilities getStoryboardInstance:
-                                          @"Sign"byIdentity:@"SignNavi"];
-        [self presentViewController:signNavi animated:YES completion:nil];
-        
-    }
         if ([Utilities loginCheck]) {
             switch (indexPath.section) {
                 case 0:
