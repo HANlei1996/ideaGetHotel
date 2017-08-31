@@ -48,7 +48,7 @@
        // _touxiangImage.image=[UIImage imageNamed:@"小葵"];
          SignModel *user=[[StorageMgr singletonStorageMgr]objectForKey:@"UserInfo"];
         
-        [_touxiangImage sd_setImageWithURL:[NSURL URLWithString:user.avatarUrl] placeholderImage:[UIImage imageNamed:@"小葵"]];
+        [_touxiangImage sd_setImageWithURL:[NSURL URLWithString:user.avatarUrl] placeholderImage:[UIImage imageNamed:@"我的头像"]];
         _nameLable.text=user.nickname;
         /*_grade.hidden=NO;
         UIImage  *stars=[UIImage imageNamed:@"star"];
@@ -125,7 +125,7 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
 
-       // if ([Utilities loginCheck]) {
+        if ([Utilities loginCheck]) {
             switch (indexPath.section) {
                 case 0:
                     [self performSegueWithIdentifier:@"wdjd" sender:self];
@@ -147,14 +147,14 @@
                    [self performSegueWithIdentifier:@"lxkf" sender:self];
                     break;
             }
-      // }else{
+      }else{
             //[self performSegueWithIdentifier:@"syxy" sender:self];
            //[self performSegueWithIdentifier:@"lxkf" sender:self];
-            //UINavigationController *signNavi=[Utilities getStoryboardInstance:
-           //                                   @"Sign"byIdentity:@"SignNavi"];
-//[self presentViewController:signNavi animated:YES completion:nil];
+        UINavigationController *signNavi=[Utilities getStoryboardInstance:
+                                             @"Sign"byIdentity:@"SignNavi"];
+         [self presentViewController:signNavi animated:YES completion:nil];
     
-      //  }
+       }
         }
 
 
