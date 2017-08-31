@@ -8,7 +8,8 @@
 
 #import "MyViewController.h"
 #import "MyTableViewCell.h"
-
+#import "SignModel.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 @interface MyViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UIImageView *touxiangImage;
@@ -44,16 +45,29 @@
         //已登录
         _loginLabel.hidden=YES;
         _nameLable.hidden=NO;
-        _touxiangImage.image=[UIImage imageNamed:@"小葵"];
-
-              // [_headImageView sd_setImageWithURL:[NSURL URLWithString:user.headImg]placeholderImage:[UIImage imageNamed:@"用户"]];
- 
-
-       
-       // [_headImageView sd_setImageWithURL:[NSURL URLWithString:user.headImg]placeholderImage:[UIImage imageNamed:@"用户"]];
-      
-
+       // _touxiangImage.image=[UIImage imageNamed:@"小葵"];
+         SignModel *user=[[StorageMgr singletonStorageMgr]objectForKey:@"UserInfo"];
         
+        [_touxiangImage sd_setImageWithURL:[NSURL URLWithString:user.avatarUrl] placeholderImage:[UIImage imageNamed:@"小葵"]];
+        _nameLable.text=user.nickname;
+        /*_grade.hidden=NO;
+        UIImage  *stars=[UIImage imageNamed:@"star"];
+    switch (user.state) {
+            case 1:
+                _star1.image=stars;
+                break;
+            case 2:
+                _star1.image=stars;
+                _star2.image=stars;
+            case 3:
+                _star1.image=stars;
+                _star2.image=stars;
+                _star3.image=stars;
+            default:
+                break;
+        }
+
+        */
 
     }else{
         //未登录
