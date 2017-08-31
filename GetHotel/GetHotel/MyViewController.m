@@ -8,7 +8,7 @@
 
 #import "MyViewController.h"
 #import "MyTableViewCell.h"
-#import "MyModel.h"
+
 @interface MyViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UIImageView *touxiangImage;
@@ -45,9 +45,8 @@
         _loginLabel.hidden=YES;
         _nameLable.hidden=NO;
         _touxiangImage.image=[UIImage imageNamed:@"小葵"];
-        MyModel *my=[[StorageMgr singletonStorageMgr]objectForKey:@"UserInfo"];
-       // [_headImageView sd_setImageWithURL:[NSURL URLWithString:user.headImg]placeholderImage:[UIImage imageNamed:@"用户"]];
-       _nameLable.text=my.name;
+              // [_headImageView sd_setImageWithURL:[NSURL URLWithString:user.headImg]placeholderImage:[UIImage imageNamed:@"用户"]];
+ 
         
 
     }else{
