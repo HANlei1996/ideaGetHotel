@@ -1,14 +1,14 @@
 //
-//  MyHotelTableViewCell.m
+//  AcquireTableViewCell.m
 //  GetHotel
 //
-//  Created by 233 on 2017/8/25.
+//  Created by 233 on 2017/8/30.
 //  Copyright © 2017年 com. All rights reserved.
 //
 
-#import "MyHotelTableViewCell.h"
+#import "AcquireTableViewCell.h"
 
-@implementation MyHotelTableViewCell
+@implementation AcquireTableViewCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
