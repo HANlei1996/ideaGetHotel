@@ -1,21 +1,19 @@
 //
 //  HotelsModel.h
-//  GetHotel
+//  Get Hotels
 //
-//  Created by admin on 2017/8/30.
+//  Created by admin on 2017/8/23.
 //  Copyright © 2017年 com. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 
 @interface HotelsModel : NSObject
-@property(strong,nonatomic)NSString *city_name;
-@property(strong,nonatomic)NSString *pageNum;
-@property(strong,nonatomic)NSString *startId;
-@property(strong,nonatomic)NSString *priceId;
-@property(strong,nonatomic)NSString *sortingId;
-@property(nonatomic)NSTimeInterval inTime;
-@property(nonatomic)NSTimeInterval outTime;
--(id)initWithDict:(NSDictionary *)dict;
+@property (strong,nonatomic) NSString *image;
+@property (strong,nonatomic) NSString *name;
 
+@property (strong,nonatomic) NSString *addr;
+@property (strong,nonatomic) NSString *distance;
+@property(strong,nonatomic)NSString *money;
+- (instancetype)initWithDict: (NSDictionary *)dict;
 @end
