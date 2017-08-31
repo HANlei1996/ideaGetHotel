@@ -45,8 +45,14 @@
         _loginLabel.hidden=YES;
         _nameLable.hidden=NO;
         _touxiangImage.image=[UIImage imageNamed:@"小葵"];
+<<<<<<< HEAD
               // [_headImageView sd_setImageWithURL:[NSURL URLWithString:user.headImg]placeholderImage:[UIImage imageNamed:@"用户"]];
  
+=======
+       
+       // [_headImageView sd_setImageWithURL:[NSURL URLWithString:user.headImg]placeholderImage:[UIImage imageNamed:@"用户"]];
+      
+>>>>>>> c0ca0564c1a829933ffee8a3474ab62b0b5c80b8
         
 
     }else{
