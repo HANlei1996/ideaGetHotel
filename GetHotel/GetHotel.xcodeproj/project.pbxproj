@@ -17,6 +17,14 @@
 		84130F611F4EE46100140F50 /* wdxxViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84130F601F4EE46100140F50 /* wdxxViewController.m */; };
 		84130F641F4EE46F00140F50 /* syxyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84130F631F4EE46F00140F50 /* syxyViewController.m */; };
 		84130F671F4EE47B00140F50 /* lxkfViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84130F661F4EE47B00140F50 /* lxkfViewController.m */; };
+		8430680C1F5939B000EDDC87 /* PR_filter_choice@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 843068001F5939B000EDDC87 /* PR_filter_choice@2x.png */; };
+		8430680D1F5939B000EDDC87 /* PR_filter_choice@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 843068011F5939B000EDDC87 /* PR_filter_choice@3x.png */; };
+		8430680E1F5939B000EDDC87 /* PR_filter_choice_top@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 843068021F5939B000EDDC87 /* PR_filter_choice_top@2x.png */; };
+		8430680F1F5939B000EDDC87 /* PR_filter_choice_top@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 843068031F5939B000EDDC87 /* PR_filter_choice_top@3x.png */; };
+		843068101F5939B000EDDC87 /* QZConditionFilterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 843068051F5939B000EDDC87 /* QZConditionFilterView.m */; };
+		843068111F5939B000EDDC87 /* QZFilterDataTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 843068071F5939B000EDDC87 /* QZFilterDataTableView.m */; };
+		843068121F5939B000EDDC87 /* QZSortCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 843068091F5939B000EDDC87 /* QZSortCell.m */; };
+		843068131F5939B000EDDC87 /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 8430680B1F5939B000EDDC87 /* UIView+Extension.m */; };
 		844D25241F57ACF300F70EB2 /* HotelsViewTableCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 844D25211F57ACF300F70EB2 /* HotelsViewTableCellTableViewCell.m */; };
 		846C1C6F1F56B4A9006C4226 /* SignModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 846C1C6E1F56B4A9006C4226 /* SignModel.m */; };
 		8488E2091F4ED3E2003D8DD5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8488E2081F4ED3E2003D8DD5 /* main.m */; };
@@ -100,6 +108,18 @@
 		84130F631F4EE46F00140F50 /* syxyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = syxyViewController.m; sourceTree = "<group>"; };
 		84130F651F4EE47B00140F50 /* lxkfViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lxkfViewController.h; sourceTree = "<group>"; };
 		84130F661F4EE47B00140F50 /* lxkfViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = lxkfViewController.m; sourceTree = "<group>"; };
+		843068001F5939B000EDDC87 /* PR_filter_choice@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PR_filter_choice@2x.png"; sourceTree = "<group>"; };
+		843068011F5939B000EDDC87 /* PR_filter_choice@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PR_filter_choice@3x.png"; sourceTree = "<group>"; };
+		843068021F5939B000EDDC87 /* PR_filter_choice_top@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PR_filter_choice_top@2x.png"; sourceTree = "<group>"; };
+		843068031F5939B000EDDC87 /* PR_filter_choice_top@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PR_filter_choice_top@3x.png"; sourceTree = "<group>"; };
+		843068041F5939B000EDDC87 /* QZConditionFilterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QZConditionFilterView.h; sourceTree = "<group>"; };
+		843068051F5939B000EDDC87 /* QZConditionFilterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QZConditionFilterView.m; sourceTree = "<group>"; };
+		843068061F5939B000EDDC87 /* QZFilterDataTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QZFilterDataTableView.h; sourceTree = "<group>"; };
+		843068071F5939B000EDDC87 /* QZFilterDataTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QZFilterDataTableView.m; sourceTree = "<group>"; };
+		843068081F5939B000EDDC87 /* QZSortCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QZSortCell.h; sourceTree = "<group>"; };
+		843068091F5939B000EDDC87 /* QZSortCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QZSortCell.m; sourceTree = "<group>"; };
+		8430680A1F5939B000EDDC87 /* UIView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Extension.h"; sourceTree = "<group>"; };
+		8430680B1F5939B000EDDC87 /* UIView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extension.m"; sourceTree = "<group>"; };
 		844D25201F57ACF300F70EB2 /* HotelsViewTableCellTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotelsViewTableCellTableViewCell.h; sourceTree = "<group>"; };
 		844D25211F57ACF300F70EB2 /* HotelsViewTableCellTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotelsViewTableCellTableViewCell.m; sourceTree = "<group>"; };
 		846C1C6D1F56B4A9006C4226 /* SignModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignModel.h; sourceTree = "<group>"; };
@@ -253,6 +273,33 @@
 				84B7B1251F57A58000307369 /* zhszViewController.m */,
 			);
 			name = My;
+			sourceTree = "<group>";
+		};
+		843067FE1F5939B000EDDC87 /* QZConditionFilterView */ = {
+			isa = PBXGroup;
+			children = (
+				843067FF1F5939B000EDDC87 /* images */,
+				843068041F5939B000EDDC87 /* QZConditionFilterView.h */,
+				843068051F5939B000EDDC87 /* QZConditionFilterView.m */,
+				843068061F5939B000EDDC87 /* QZFilterDataTableView.h */,
+				843068071F5939B000EDDC87 /* QZFilterDataTableView.m */,
+				843068081F5939B000EDDC87 /* QZSortCell.h */,
+				843068091F5939B000EDDC87 /* QZSortCell.m */,
+				8430680A1F5939B000EDDC87 /* UIView+Extension.h */,
+				8430680B1F5939B000EDDC87 /* UIView+Extension.m */,
+			);
+			path = QZConditionFilterView;
+			sourceTree = "<group>";
+		};
+		843067FF1F5939B000EDDC87 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				843068001F5939B000EDDC87 /* PR_filter_choice@2x.png */,
+				843068011F5939B000EDDC87 /* PR_filter_choice@3x.png */,
+				843068021F5939B000EDDC87 /* PR_filter_choice_top@2x.png */,
+				843068031F5939B000EDDC87 /* PR_filter_choice_top@3x.png */,
+			);
+			path = images;
 			sourceTree = "<group>";
 		};
 		8488E1FB1F4ED3E2003D8DD5 = {
@@ -451,6 +498,7 @@
 		8488E2A01F4ED77E003D8DD5 /* home */ = {
 			isa = PBXGroup;
 			children = (
+				843067FE1F5939B000EDDC87 /* QZConditionFilterView */,
 				844D25201F57ACF300F70EB2 /* HotelsViewTableCellTableViewCell.h */,
 				844D25211F57ACF300F70EB2 /* HotelsViewTableCellTableViewCell.m */,
 				8488E2AD1F4EDB26003D8DD5 /* HotelViewController.h */,
@@ -619,11 +667,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				8488E2A71F4ED820003D8DD5 /* MyHotel.storyboard in Resources */,
+				8430680C1F5939B000EDDC87 /* PR_filter_choice@2x.png in Resources */,
 				8488E2A91F4ED832003D8DD5 /* Sign.storyboard in Resources */,
 				8488E2A51F4ED808003D8DD5 /* HotelDetail.storyboard in Resources */,
 				8488E21A1F4ED3E2003D8DD5 /* LaunchScreen.storyboard in Resources */,
 				8488E2171F4ED3E2003D8DD5 /* Assets.xcassets in Resources */,
+				8430680F1F5939B000EDDC87 /* PR_filter_choice_top@3x.png in Resources */,
+				8430680D1F5939B000EDDC87 /* PR_filter_choice@3x.png in Resources */,
 				8488E2121F4ED3E2003D8DD5 /* Main.storyboard in Resources */,
+				8430680E1F5939B000EDDC87 /* PR_filter_choice_top@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -696,6 +748,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				843068131F5939B000EDDC87 /* UIView+Extension.m in Sources */,
 				8488E2AF1F4EDB26003D8DD5 /* HotelViewController.m in Sources */,
 				84130F671F4EE47B00140F50 /* lxkfViewController.m in Sources */,
 				8488E2921F4ED4B9003D8DD5 /* Utilities.m in Sources */,
@@ -725,6 +778,7 @@
 				8488E28C1F4ED4B9003D8DD5 /* NSDate+Utility.m in Sources */,
 				79EBF9511F56CC8F0046AB39 /* FollowTableViewCell.m in Sources */,
 				8488E2B81F4EDB85003D8DD5 /* MyHotelViewController.m in Sources */,
+				843068111F5939B000EDDC87 /* QZFilterDataTableView.m in Sources */,
 				84130F5A1F4EDFBB00140F50 /* MyTableViewCell.m in Sources */,
 				8488E24F1F4ED4A4003D8DD5 /* SKTagView.m in Sources */,
 				8488E2881F4ED4B9003D8DD5 /* AppAPIClient.m in Sources */,
@@ -733,10 +787,12 @@
 				79EBF9521F56CC8F0046AB39 /* NotAcquireTableViewCell.m in Sources */,
 				84E202551F53E1630035C073 /* PayTableViewCell.m in Sources */,
 				8488E2BE1F4EDBDF003D8DD5 /* SignUpViewController.m in Sources */,
+				843068121F5939B000EDDC87 /* QZSortCell.m in Sources */,
 				8488E24B1F4ED4A4003D8DD5 /* HMSegmentedControl.m in Sources */,
 				79EBF9501F56CC8F0046AB39 /* AcquireTableViewCell.m in Sources */,
 				84B95E271F5030CC00AF5D98 /* HotelDetail.m in Sources */,
 				84B7B1291F57BEA000307369 /* HotelsModel.m in Sources */,
+				843068101F5939B000EDDC87 /* QZConditionFilterView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

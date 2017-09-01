@@ -10,6 +10,7 @@
 #import "HotelsViewTableCellTableViewCell.h"
 #import <CoreLocation/CoreLocation.h>
 #import "HotelsModel.h"
+#import "QZConditionFilterView.h"
 @interface HotelViewController()<UITableViewDataSource,UITableViewDelegate,CLLocationManagerDelegate>{
     BOOL isLoading;
     BOOL firstVisit;
@@ -17,6 +18,11 @@
     BOOL time;
     BOOL pageNum;
     BOOL pageSize;
+    NSArray *_selectedDataSource1Ary;
+    NSArray *_selectedDataSource2Ary;
+    NSArray *_selectedDataSource3Ary;
+    
+    QZConditionFilterView *_conditionFilterView;
 }
 @property (weak, nonatomic) IBOutlet UIButton *kaishi;
 @property (weak, nonatomic) IBOutlet UIButton *likai;
@@ -64,6 +70,47 @@
     
     [self naviConfig];
     // Do any additional setup after loading the view.
+    _selectedDataSource1Ary = @[@"智能排序"];
+    _selectedDataSource2Ary = @[@"筛选"];
+   // _selectedDataSource3Ary = @[@"默认条件"];
+    
+    _conditionFilterView = [QZConditionFilterView conditionFilterViewWithFilterBlock:^(BOOL isFilter, NSArray *dataSource1Ary, NSArray *dataSource2Ary, NSArray *dataSource3Ary) {
+        if (isFilter) {
+            //网络加载请求 存储请求参数
+            _selectedDataSource1Ary = dataSource1Ary;
+            _selectedDataSource2Ary = dataSource2Ary;
+            _selectedDataSource3Ary = dataSource3Ary;
+        }else{
+            // 不是筛选，全部赋初值（在这个工程其实是没用的，因为tableView是选中后必选的，即一旦选中就没有空的情况，但是如果可以清空筛选条件的时候就有必要 *重新* reset data）
+            _selectedDataSource1Ary = @[@""];
+            _selectedDataSource2Ary = @[@""];
+            //_selectedDataSource3Ary = @[@"默认条件"];
+        }
+        [self startRequest];
+    }];
+    //_conditionFilterView.y += 64;
+    // 传入数据源，对应三个tableView顺序
+    _conditionFilterView.dataAry1 = @[@"智能排序",@"价格低到高",@"价格高到低",@"离我从近到远"];
+    _conditionFilterView.dataAry2 = @[@"星级排序",@"价格排序"];
+    //_conditionFilterView.dataAry3 = @[@"3-1",@"3-2",@"3-3",@"3-4",@"3-5"];
+    
+    // 初次设置默认显示数据，内部会调用block 进行第一次数据加载
+    [_conditionFilterView bindChoseArrayDataSource1:_selectedDataSource1Ary DataSource2:_selectedDataSource2Ary DataSource3:_selectedDataSource3Ary];
+    
+    [self.view addSubview:_conditionFilterView];
+    
+}
+- (void)startRequest
+{
+    
+    NSString *source1 = [NSString stringWithFormat:@"%@",_selectedDataSource1Ary.firstObject];
+    NSString *source2 = [NSString stringWithFormat:@"%@",_selectedDataSource2Ary.firstObject];
+    NSString *source3 = [NSString stringWithFormat:@"%@",_selectedDataSource3Ary.firstObject];
+    NSDictionary *dic = [_conditionFilterView keyValueDic];
+    // 可以用字符串在dic换成对应英文key
+    
+    NSLog(@"\n第一个条件:%@\n  第二个条件:%@\n  第三个条件:%@\n",source1,source2,source3);
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -187,7 +234,7 @@
     //初始化一个日期格式器
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     //定义日期的格式为yyyy-MM-dd
-    formatter.dateFormat = @"yyyy-MM-dd";
+    formatter.dateFormat = @"yy-M-dd";
     //将日期转换为字符串（通过日期格式器中的stringFromDate方法）
     NSString *theDate = [formatter stringFromDate:date];
     
@@ -206,7 +253,7 @@
 
 
 - (void)netRequest{
-    _avi = [Utilities getCoverOnView:self.view];
+   // _avi = [Utilities getCoverOnView:self.view];
     NSDictionary *para =  @{@"city_name":_cityBtn,@"inTime":_kaishi,@"outTime":_likai};
     [RequestAPI requestURL:@"/findHotelByCity_edu" withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
         NSLog(@"responseObject:%@", responseObject);
