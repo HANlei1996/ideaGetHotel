@@ -176,9 +176,14 @@
 }
 
 - (IBAction)BuyAction:(UIButton *)sender forEvent:(UIEvent *)event {
-    
-    [self performSegueWithIdentifier:@"pay" sender:self];
-
+    if ([Utilities loginCheck]) {
+        [self performSegueWithIdentifier:@"pay" sender:self];
+        
+    }else{
+        UINavigationController *signNavi=[Utilities getStoryboardInstance:@"Sign"byIdentity:@"SignNavi"];
+        [self presentViewController:signNavi animated:YES completion:nil];
+        
+    }
 }
 @end
 
