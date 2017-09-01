@@ -6,8 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -23,28 +21,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="住哪儿" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9c2-bD-Y17">
-                                <rect key="frame" x="120" y="265.5" width="135" height="36"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="界面" translatesAutoresizingMaskIntoConstraints="NO" id="Ahx-Lj-RQH">
-                                <rect key="frame" x="125" y="91" width="125" height="125"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="Ahx-Lj-RQH" secondAttribute="height" multiplier="1:1" id="gVQ-o9-zPh"/>
-                                </constraints>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="酒店信息图片" translatesAutoresizingMaskIntoConstraints="NO" id="Ahx-Lj-RQH">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.2464469628" green="0.50946320580000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="9c2-bD-Y17" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="5x9-63-khl"/>
-                            <constraint firstAttribute="trailing" secondItem="9c2-bD-Y17" secondAttribute="trailing" constant="120" id="5yS-GF-RGz"/>
-                            <constraint firstItem="Ahx-Lj-RQH" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" constant="-180" id="7Pp-QB-uSt"/>
-                            <constraint firstItem="9c2-bD-Y17" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" constant="120" id="A66-MG-mYj"/>
-                            <constraint firstItem="Ahx-Lj-RQH" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="width" multiplier="2:6" id="Lzo-JJ-y3r"/>
-                            <constraint firstItem="9c2-bD-Y17" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" constant="-50" id="RnR-Re-UmJ"/>
-                            <constraint firstItem="Ahx-Lj-RQH" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="hQS-mG-j8x"/>
+                            <constraint firstAttribute="trailing" secondItem="Ahx-Lj-RQH" secondAttribute="trailing" id="JS3-CU-hyx"/>
+                            <constraint firstItem="Ahx-Lj-RQH" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="gb7-bS-tRG"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="Ahx-Lj-RQH" secondAttribute="bottom" id="kcw-zU-hj6"/>
+                            <constraint firstItem="Ahx-Lj-RQH" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" id="uov-cZ-b0O"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -54,6 +40,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="界面" width="180" height="214"/>
+        <image name="酒店信息图片" width="421" height="235"/>
     </resources>
 </document>

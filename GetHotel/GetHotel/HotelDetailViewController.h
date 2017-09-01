@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "HotelDetail.h"
 @interface HotelDetailViewController : UIViewController
 
 @end

@@ -36,14 +36,13 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pns-lW-9MD">
                                         <rect key="frame" x="0.0" y="150" width="375" height="40"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="无锡喜来登酒店大床房" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eez-Mp-cQo">
-                                                <rect key="frame" x="50" y="10" width="174" height="21"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="无锡君乐登酒店" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eez-Mp-cQo">
+                                                <rect key="frame" x="50" y="10" width="121.5" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
-                                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="￥ 358" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q3d-U0-lMr">
-                                                <rect key="frame" x="307" y="10" width="53" height="21"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="￥ 318" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q3d-U0-lMr">
+                                                <rect key="frame" x="309.5" y="10" width="50.5" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" red="1" green="0.27272378209999998" blue="0.072119036760000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -112,7 +111,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="188" height="45"/>
                                                 <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
                                                 <state key="normal" title="2月24日明天      &gt;">
-                                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="startDateAction:forEvent:" destination="3OZ-vW-qXb" eventType="touchUpInside" id="d0R-WZ-CmC"/>
@@ -121,7 +120,7 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2bd-de-pZ6">
                                                 <rect key="frame" x="187" y="0.0" width="188" height="45"/>
                                                 <state key="normal" title="2月25日后天         &gt;">
-                                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="endDateAction:forEvent:" destination="3OZ-vW-qXb" eventType="touchUpInside" id="pG2-ed-l7a"/>
@@ -172,8 +171,8 @@
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="豪华大床房" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Mg-HT-yR7">
-                                                <rect key="frame" x="98" y="15" width="77" height="18"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <rect key="frame" x="98" y="15" width="66.5" height="16"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                 <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -507,9 +506,13 @@
                         <outlet property="SmallTalkBtn" destination="1HW-Q6-HWR" id="pCi-Xm-eXz"/>
                         <outlet property="StartDateBtn" destination="iXv-if-Vl9" id="4GB-97-Ge7"/>
                         <outlet property="TooBar" destination="cDp-gP-e9c" id="J6O-ab-fhC"/>
+                        <outlet property="early" destination="bR7-OA-i6o" id="bPp-yg-xlS"/>
                         <outlet property="endDateBtn" destination="2bd-de-pZ6" id="vgC-HK-Gdd"/>
                         <outlet property="hotelPriceLabel" destination="Q3d-U0-lMr" id="7su-4V-HLS"/>
                         <outlet property="hotelRoom" destination="ZjP-6b-KgZ" id="Abe-sO-uH0"/>
+                        <outlet property="hotelRoomType" destination="1Mg-HT-yR7" id="kfh-0X-DAH"/>
+                        <outlet property="size" destination="dQx-b3-qzo" id="HL9-VH-ZRu"/>
+                        <outlet property="type" destination="HOT-nE-jqY" id="GPM-y8-cqp"/>
                         <segue destination="v0K-vy-xbQ" kind="show" identifier="pay" id="SP6-Fp-fQM"/>
                     </connections>
                 </viewController>
@@ -517,10 +520,10 @@
             </objects>
             <point key="canvasLocation" x="911.20000000000005" y="126.38680659670166"/>
         </scene>
-        <!--Pay Table View Controller-->
+        <!--支付-->
         <scene sceneID="wEZ-3a-ubC">
             <objects>
-                <tableViewController id="v0K-vy-xbQ" customClass="PayTableViewController" sceneMemberID="viewController">
+                <tableViewController title="支付" id="v0K-vy-xbQ" customClass="PayTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelectionDuringEditing="YES" allowsMultipleSelectionDuringEditing="YES" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="BJN-mO-VNy">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -529,8 +532,8 @@
                             <rect key="frame" x="0.0" y="0.0" width="375" height="145"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="万海假日酒店" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2la-lb-aqX">
-                                    <rect key="frame" x="15" y="20" width="116.5" height="23"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="无锡君乐登酒店" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2la-lb-aqX">
+                                    <rect key="frame" x="15" y="20" width="136" height="23"/>
                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="19"/>
                                     <color key="textColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                                     <nil key="highlightedColor"/>
@@ -541,8 +544,8 @@
                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="358元" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oeE-cK-TDf">
-                                    <rect key="frame" x="15" y="91" width="97.5" height="39.5"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="318元" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oeE-cK-TDf">
+                                    <rect key="frame" x="15" y="91" width="93" height="39.5"/>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="33"/>
                                     <color key="textColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
