@@ -136,7 +136,11 @@
     //UINavigationController *signNavi=[Utilities getStoryboardInstance:
                                   //    @"Member"byIdentity:@"SignNavi"];
     //[self presentViewController:signNavi animated:YES completion:nil];    //无输入异常的情况，开始正式执行登录接口
-   
+    //保存用户名
+    
+    
+    
+
      [self networkRequest];
 }
 #pragma mark - request
@@ -158,6 +162,7 @@
             //清空密码输入框的内容
             _passwordnameTextField.text = @"";
             //记忆用户名
+            [Utilities removeUserDefaults:@"Username"];
             [Utilities setUserDefaults:@"Username" content:_usernameTextField.text];
             //[self performSegueWithIdentifier:@"SignNavi" sender:self];
             [self dismissViewControllerAnimated:YES completion:nil];
